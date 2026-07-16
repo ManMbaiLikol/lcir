@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://manmbaikol.github.io/lcir/sitemap.xml
+Sitemap: https://manmbailikol.github.io/lcir/sitemap.xml
