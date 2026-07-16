@@ -96,15 +96,16 @@ input:focus,textarea:focus{outline:2px solid #c9932e;outline-offset:1px}
       </div>
     </div>
 
-    <form action="https://api.web3forms.com/submit" method="POST" style="display:flex;flex-direction:column;gap:18px">
-      <!-- ⚠️ À ACTIVER : créez une clé gratuite (30 s, sans mot de passe) sur https://web3forms.com
-           avec l'adresse contact@lcir.cm, puis remplacez VOTRE_CLE_WEB3FORMS_ICI ci-dessous.
-           Tant que la clé n'est pas renseignée, l'envoi échoue (les visiteurs peuvent utiliser
-           l'adresse e-mail affichée à gauche en attendant). -->
-      <input type="hidden" name="access_key" value="VOTRE_CLE_WEB3FORMS_ICI">
-      <input type="hidden" name="subject" value="Nouveau message depuis le site LCIR">
-      <input type="hidden" name="from_name" value="Site LCIR">
-      <input type="checkbox" name="botcheck" style="display:none !important">
+    <form action="https://formsubmit.co/contact@lcir.cm" method="POST" style="display:flex;flex-direction:column;gap:18px">
+      <!-- Formulaire via FormSubmit.co — aucun compte ni clé requis, aucun serveur.
+           ACTIVATION (une seule fois) : au tout premier envoi, FormSubmit adresse un e-mail
+           de confirmation à contact@lcir.cm ; cliquez le lien qu'il contient, et le
+           formulaire fonctionne ensuite définitivement. -->
+      <input type="hidden" name="_subject" value="Nouveau message depuis le site LCIR">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://manmbailikol.github.io/lcir/merci.html">
+      <input type="text" name="_honey" style="display:none">
       <div style="display:flex;gap:18px;flex-wrap:wrap">
         <div style="flex:1;min-width:200px">
           <label style="font-size:11px;font-weight:800;letter-spacing:.05em;color:rgba(23,20,16,.6);display:block;margin-bottom:8px">NOM</label>
