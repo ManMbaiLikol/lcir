@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'Inter',system-ui,sans-serif}
+a{color:#c9932e;text-decoration:none}
+a:hover{color:#a3781f}
+.hr{height:1px;background:rgba(0,0,0,.12);border:none;margin:0}
+@media (max-width: 900px) {
+  .lc-nav{flex-wrap:wrap!important;gap:14px!important;padding:16px 20px!important}
+  .lc-nav-sub{display:none!important}
+  .lc-nav-pills{order:3;width:100%!important;justify-content:center!important;flex-wrap:wrap!important}
+  .lc-section{padding:40px 20px!important}
+  .lc-h1{font-size:36px!important}
+  .lc-h2{font-size:26px!important}
+  .lc-team-grid{grid-template-columns:1fr!important}
+  .lc-closing{padding:40px 20px!important;text-align:center;justify-content:center!important}
+  .lc-closing-title{font-size:32px!important}
+  .lc-footer{flex-direction:column;align-items:flex-start!important;gap:14px!important}
+}
+</style>
+</helmet>
+
+<div style="background:#f8f2e3;color:#171410" data-screen-label="Equipe">
+
+  <!-- NAV -->
+  <div class="lc-nav" style="display:flex;align-items:center;gap:28px;padding:18px 44px;border-bottom:1px solid rgba(0,0,0,.1);background:#f8f2e3;position:sticky;top:0;z-index:100">
+    <a href="LCIR - Accueil.dc.html" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit">
+      <img src="assets/logo-lcir.png" alt="LCIR" style="height:46px;width:auto">
+    </a>
+    <div class="lc-nav-pills" style="margin-left:20px;display:flex;gap:6px;align-items:center;border:1px solid rgba(0,0,0,.14);border-radius:999px;padding:8px 6px">
+      <a href="LCIR - Accueil.dc.html" style="padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em;color:#171410;transition:background .2s,color .2s" style-hover="background:#171410;color:#f8f2e3">ACCUEIL</a>
+      <a href="LCIR - A-propos.dc.html" style="padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em;color:#171410;transition:background .2s,color .2s" style-hover="background:#171410;color:#f8f2e3">MISSION</a>
+      <a href="LCIR - Publications.dc.html" style="padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em;color:#171410;transition:background .2s,color .2s" style-hover="background:#171410;color:#f8f2e3">PUBLICATIONS</a>
+      <a href="LCIR - Equipe.dc.html" style="padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em;background:#171410;color:#f8f2e3">ÉQUIPE</a>
+      <a href="LCIR - Accueil.dc.html#ressources" style="padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em;color:#171410;transition:background .2s,color .2s" style-hover="background:#171410;color:#f8f2e3">RESSOURCES</a>
+    </div>
+    <a href="LCIR - Contact.dc.html" style="margin-left:auto;font-size:12px;font-weight:800;letter-spacing:.05em;display:flex;align-items:center;gap:6px;border-bottom:1px solid #c9932e;padding-bottom:3px;color:#c9932e;transition:gap .2s,color .2s" style-hover="gap:11px;color:#a3781f">CONTACT <span>→</span></a>
+  </div>
+
+  <!-- HERO -->
+  <div class="lc-section" style="padding:64px 44px 40px">
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.1em;color:#c9932e;margin-bottom:22px">
+      <span style="width:7px;height:7px;border-radius:50%;background:#c9932e;display:inline-block"></span>L'ÉQUIPE
+    </div>
+    <h1 class="lc-h1" style="font-size:52px;line-height:1.1;font-weight:800;margin:0 0 22px;max-width:16em">Les personnes qui construisent le LCIR.</h1>
+    <p style="font-size:17px;max-width:38em;color:rgba(23,20,16,.75);line-height:1.6;margin:0">Un laboratoire naissant, porté par une exigence de rigueur et ouvert aux chercheurs, analystes et contributeurs qui partagent cette ambition.</p>
+  </div>
+
+  <!-- TEAM GRID -->
+  <div class="lc-section lc-team-grid" style="padding:0 44px 64px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+    <div style="border:1px solid rgba(0,0,0,.12);border-radius:6px;padding:30px;transition:box-shadow .2s,transform .2s" style-hover="box-shadow:0 12px 30px rgba(0,0,0,.08);transform:translateY(-2px)">
+      <div style="width:64px;height:64px;border-radius:50%;background:#171410;color:#c9932e;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;margin-bottom:18px">MML</div>
+      <div style="font-size:20px;font-weight:800;margin-bottom:4px">Man Mbaï Likol</div>
+      <div style="font-size:12px;font-weight:800;letter-spacing:.05em;color:#c9932e;margin-bottom:14px">FONDATEUR · CHERCHEUR PRINCIPAL</div>
+      <p style="font-size:14px;color:rgba(23,20,16,.7);line-height:1.6;margin:0">Auteur des Cahiers de la Souveraineté Camerounaise, dont « Le Cameroun construit-il l'après-CFA ? ».</p>
+    </div>
+    <div style="border:1px dashed rgba(0,0,0,.2);border-radius:6px;padding:30px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:12px">
+      <div style="width:64px;height:64px;border-radius:50%;border:1px dashed rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;color:rgba(23,20,16,.35);font-size:24px">+</div>
+      <div style="font-size:16px;font-weight:800">Rejoindre l'équipe</div>
+      <p style="font-size:14px;color:rgba(23,20,16,.6);line-height:1.6;margin:0">Le LCIR s'ouvre progressivement à des chercheurs, analystes et étudiants souhaitant contribuer à ses travaux.</p>
+      <a href="LCIR - Contact.dc.html" style="font-size:12px;font-weight:800;letter-spacing:.04em;display:inline-flex;gap:6px;transition:gap .2s" style-hover="gap:11px">NOUS ÉCRIRE <span>→</span></a>
+    </div>
+  </div>
+
+  <!-- CLOSING BANNER -->
+  <div class="lc-closing" style="background:linear-gradient(100deg,#e7bb52,#8a6316);padding:64px 44px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px">
+    <div>
+      <div style="font-size:12px;font-weight:800;letter-spacing:.06em;color:#171410;margin-bottom:10px">LE RAISONNEMENT EST UNE INFRASTRUCTURE.</div>
+      <div class="lc-closing-title" style="font-size:48px;font-weight:800;color:#171410">Construisons-la ensemble.</div>
+    </div>
+    <a href="LCIR - Contact.dc.html" style="background:#171410;color:#f8f2e3;border-radius:999px;padding:16px 26px;font-size:12px;font-weight:800;letter-spacing:.05em;display:inline-flex;align-items:center;gap:10px;transition:transform .2s" style-hover="transform:translateY(-2px) scale(1.03)">NOUS CONTACTER <span>→</span></a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="lc-footer" style="background:#100e0b;color:#f8f2e3;padding:32px 44px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
+    <div style="display:flex;align-items:center;gap:14px">
+      <svg width="30" height="30" viewBox="0 0 34 34" fill="none"><rect x="1" y="1" width="10" height="10" stroke="#f8f2e3" stroke-width="2.4"/><rect x="23" y="1" width="10" height="10" stroke="#f8f2e3" stroke-width="2.4"/><rect x="1" y="23" width="10" height="10" stroke="#f8f2e3" stroke-width="2.4"/><rect x="23" y="23" width="10" height="10" stroke="#f8f2e3" stroke-width="2.4"/><rect x="14" y="0" width="6" height="6" fill="#c9932e"/></svg>
+      <div style="font-weight:800;font-size:16px;letter-spacing:.06em">LCIR</div>
+      <div style="font-size:12px;color:rgba(247,242,230,.5)">LABORATOIRE CAMEROUNAIS D'INGÉNIERIE DU RAISONNEMENT</div>
+    </div>
+    <div style="display:flex;gap:24px;font-size:12px;font-weight:700;letter-spacing:.04em">
+      <a href="LCIR - A-propos.dc.html" style="color:#f8f2e3;transition:color .2s" style-hover="color:#c9932e">MISSION</a>
+      <a href="LCIR - Publications.dc.html" style="color:#f8f2e3;transition:color .2s" style-hover="color:#c9932e">PUBLICATIONS</a>
+      <a href="LCIR - Accueil.dc.html#ressources" style="color:#f8f2e3;transition:color .2s" style-hover="color:#c9932e">RESSOURCES</a>
+    </div>
+  </div>
+  <div style="background:#100e0b;color:rgba(247,242,230,.5);padding:0 44px 28px;font-size:12px">© 2026 LCIR · Observer. Comprendre. Construire.</div>
+
+</div>
+
+</x-dc>
+</body>
+</html>

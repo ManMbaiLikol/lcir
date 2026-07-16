@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="styles.css">
+<style>
+body{margin:0;background:#e4e2e1;font-family:system-ui,sans-serif}
+.dv-turn{padding:40px 44px 60px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}
+.dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-card{max-width:100%;background:#fff;border:1px solid rgba(0,0,0,.08);box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}
+.dv-opt:target .dv-oid{background:#ec3013;color:#fff}
+.dv-next{margin:22px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}
+.ph{background:repeating-linear-gradient(135deg,#d7d3d3,#d7d3d3 10px,#eae7e7 10px,#eae7e7 20px);display:flex;align-items:center;justify-content:center;color:#605d5d;font:12px ui-monospace,Menlo,monospace;text-align:center;padding:8px}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t1">
+  <div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">LCIR — 3 pistes de structure pour la page d'accueil</span></div>
+  <div class="dv-opts">
+
+    <div class="dv-opt" id="1a">
+      <div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Grille modulaire — strict, rythmé, dividers marqués</div>
+      <div class="dv-card" style="width:1180px">
+        <!-- NAV -->
+        <div class="nav" style="background:var(--color-bg)">
+          <span class="nav-brand">LCIR</span>
+          <a href="#" aria-current="page">Accueil</a>
+          <a href="#">Mission</a>
+          <a href="#">Publications</a>
+          <a href="#">Projets</a>
+          <a href="#">Ressources</a>
+          <a href="#">Actualités</a>
+          <a href="#">Contact</a>
+          <span style="margin-left:auto;display:flex;gap:10px;align-items:center">
+            <span style="font-size:12px;letter-spacing:.05em;color:var(--color-text)">FR</span>
+            <span style="font-size:12px;letter-spacing:.05em;opacity:.4">EN</span>
+            <a class="btn btn-secondary" href="#">S'abonner</a>
+          </span>
+        </div>
+
+        <!-- HERO: 12-col grid -->
+        <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:0;border-bottom:2px solid var(--color-divider)">
+          <div style="grid-column:1/8;padding:56px 40px;border-right:2px solid var(--color-divider)">
+            <div class="tag tag-accent" style="margin-bottom:16px">LABORATOIRE DE RECHERCHE</div>
+            <h1 style="font-size:48px;max-width:9.5em;margin-bottom:20px">Faire progresser l'ingénierie du raisonnement au Cameroun</h1>
+            <p style="font-size:16px;max-width:36em;opacity:.85;margin-bottom:28px">Le LCIR conçoit des méthodes, modèles et outils de raisonnement computationnel au service de la souveraineté scientifique et numérique du Cameroun.</p>
+            <div style="display:flex;gap:12px">
+              <a class="btn btn-primary" href="#">Découvrir la mission</a>
+              <a class="btn btn-secondary" href="#">Voir les publications</a>
+            </div>
+          </div>
+          <div style="grid-column:8/13;display:grid;grid-template-rows:1fr 1fr">
+            <div class="ph" style="border-bottom:2px solid var(--color-divider)">photo laboratoire — n&amp;b</div>
+            <div style="padding:24px;display:flex;flex-direction:column;justify-content:center;gap:14px">
+              <div><div style="font-family:var(--font-heading);font-weight:800;font-size:28px">12</div><div style="font-size:12px;opacity:.6">projets actifs</div></div>
+              <div class="hr" style="margin:4px 0"></div>
+              <div><div style="font-family:var(--font-heading);font-weight:800;font-size:28px">37</div><div style="font-size:12px;opacity:.6">publications</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MISSION: 3 equal cells -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);border-bottom:2px solid var(--color-divider)">
+          <div style="padding:32px;border-right:2px solid var(--color-divider)">
+            <h6 style="color:var(--color-accent-700)">01 — RECHERCHE</h6>
+            <h3>Modèles de raisonnement</h3>
+            <p style="font-size:13px;opacity:.75">Logique computationnelle, inférence et systèmes de décision appliqués aux enjeux nationaux.</p>
+          </div>
+          <div style="padding:32px;border-right:2px solid var(--color-divider)">
+            <h6 style="color:var(--color-accent-700)">02 — FORMATION</h6>
+            <h3>Doctorants &amp; chercheurs</h3>
+            <p style="font-size:13px;opacity:.75">Un vivier de compétences en ingénierie du raisonnement formé au et pour le Cameroun.</p>
+          </div>
+          <div style="padding:32px">
+            <h6 style="color:var(--color-accent-700)">03 — DIFFUSION</h6>
+            <h3>Ressources ouvertes</h3>
+            <p style="font-size:13px;opacity:.75">Rapports, jeux de données et présentations publiés en accès libre pour la communauté.</p>
+          </div>
+        </div>
+
+        <!-- PUBLICATIONS -->
+        <div style="padding:32px;border-bottom:2px solid var(--color-divider)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px">
+            <h2 style="font-size:24px">Publications récentes</h2>
+            <a class="btn btn-ghost" href="#">Tout voir →</a>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+            <div class="card elev-sm"><div class="card-kicker">Cahier n°14</div><div class="card-title">Souveraineté numérique et raisonnement algorithmique</div><p class="card-body">Une étude sur l'autonomie des systèmes décisionnels nationaux.</p><div class="card-meta">Juin 2026 · PDF</div></div>
+            <div class="card elev-sm"><div class="card-kicker">Cahier n°13</div><div class="card-title">Logiques non-monotones en contexte agricole</div><p class="card-body">Modélisation des incertitudes pour l'aide à la décision rurale.</p><div class="card-meta">Avril 2026 · PDF</div></div>
+            <div class="card elev-sm"><div class="card-kicker">Cahier n°12</div><div class="card-title">Vers des systèmes experts francophones</div><p class="card-body">État de l'art et perspectives régionales.</p><div class="card-meta">Février 2026 · PDF</div></div>
+          </div>
+        </div>
+
+        <!-- RESOURCES -->
+        <div style="padding:32px;border-bottom:2px solid var(--color-divider)">
+          <h2 style="font-size:24px;margin-bottom:18px">Ressources téléchargeables</h2>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+            <div class="card"><span class="tag tag-outline">PDF</span><div class="card-title" style="margin-top:8px">Rapport annuel 2025</div><a class="btn btn-ghost" style="padding-left:0;margin-top:6px" href="#">Télécharger ↓</a></div>
+            <div class="card"><span class="tag tag-outline">PPTX</span><div class="card-title" style="margin-top:8px">Présentation institutionnelle</div><a class="btn btn-ghost" style="padding-left:0;margin-top:6px" href="#">Télécharger ↓</a></div>
+            <div class="card"><span class="tag tag-outline">XLSX</span><div class="card-title" style="margin-top:8px">Jeu de données — projets 2026</div><a class="btn btn-ghost" style="padding-left:0;margin-top:6px" href="#">Télécharger ↓</a></div>
+          </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="padding:28px 32px;display:flex;justify-content:space-between;background:var(--color-surface)">
+          <span style="font-family:var(--font-heading);font-weight:800">LCIR</span>
+          <span style="font-size:12px;opacity:.6">Yaoundé, Cameroun — contact@lcir.cm</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="dv-opt" id="1b">
+      <div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Journal éditorial — masthead, vedette + sommaire</div>
+      <div class="dv-card" style="width:1180px">
+        <!-- Masthead nav -->
+        <div style="text-align:center;padding:28px 0 12px;border-bottom:2px solid var(--color-divider)">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:26px;letter-spacing:.02em">LABORATOIRE CAMEROUNAIS D'INGÉNIERIE DU RAISONNEMENT</div>
+          <div style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;opacity:.55;margin-top:4px">Recherche · Publications · Souveraineté scientifique</div>
+        </div>
+        <div class="nav" style="justify-content:center;background:var(--color-bg);border-bottom:2px solid var(--color-divider)">
+          <a href="#" aria-current="page">Accueil</a><a href="#">Mission</a><a href="#">Publications</a><a href="#">Projets</a><a href="#">Ressources</a><a href="#">Actualités</a><a href="#">Contact</a>
+          <span style="margin-left:16px;font-size:12px;opacity:.6">FR / EN</span>
+        </div>
+
+        <!-- Editorial split -->
+        <div style="display:grid;grid-template-columns:1.6fr 1fr;border-bottom:2px solid var(--color-divider)">
+          <div style="padding:40px;border-right:2px solid var(--color-divider)">
+            <div class="tag tag-accent" style="margin-bottom:14px">À LA UNE</div>
+            <h1 style="font-size:38px;margin-bottom:16px">Penser le raisonnement computationnel depuis le Cameroun</h1>
+            <p style="font-size:15px;opacity:.85;max-width:34em;margin-bottom:22px">Le LCIR réunit chercheurs, doctorants et partenaires autour d'une ambition commune : construire une expertise nationale en ingénierie du raisonnement, de la logique formelle aux systèmes de décision.</p>
+            <a class="btn btn-primary" href="#">Lire la mission complète</a>
+            <div class="hr"></div>
+            <div class="ph" style="height:220px">photo — vie du laboratoire (n&amp;b)</div>
+          </div>
+          <div style="padding:32px;display:flex;flex-direction:column;gap:22px">
+            <div>
+              <h6 style="color:var(--color-accent-700)">SOMMAIRE</h6>
+              <div style="display:flex;flex-direction:column;gap:14px;margin-top:10px">
+                <div><div style="font-size:13px;font-weight:600">Cahier n°14 — Souveraineté numérique</div><div style="font-size:11px;opacity:.55">Publication · juin 2026</div></div>
+                <div class="hr" style="margin:0"></div>
+                <div><div style="font-size:13px;font-weight:600">Projet ARIA — raisonnement agricole</div><div style="font-size:11px;opacity:.55">Projet en cours</div></div>
+                <div class="hr" style="margin:0"></div>
+                <div><div style="font-size:13px;font-weight:600">Séminaire doctoral — juillet</div><div style="font-size:11px;opacity:.55">Actualité</div></div>
+              </div>
+            </div>
+            <a class="btn btn-secondary btn-block" href="#">Toute l'actualité →</a>
+          </div>
+        </div>
+
+        <!-- Publications table-style list -->
+        <div style="padding:32px;border-bottom:2px solid var(--color-divider)">
+          <h2 style="font-size:22px;margin-bottom:16px">Dernières publications</h2>
+          <table class="table">
+            <tr><th>Cahier</th><th>Titre</th><th>Date</th><th></th></tr>
+            <tr><td>n°14</td><td>Souveraineté numérique et raisonnement algorithmique</td><td>Juin 2026</td><td><span class="tag tag-outline">PDF</span></td></tr>
+            <tr><td>n°13</td><td>Logiques non-monotones en contexte agricole</td><td>Avril 2026</td><td><span class="tag tag-outline">PDF</span></td></tr>
+            <tr><td>n°12</td><td>Vers des systèmes experts francophones</td><td>Février 2026</td><td><span class="tag tag-outline">PDF</span></td></tr>
+          </table>
+        </div>
+
+        <!-- Resources row -->
+        <div style="padding:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;border-bottom:2px solid var(--color-divider)">
+          <div class="card"><span class="tag tag-outline">PDF</span><div class="card-title" style="margin-top:8px">Rapport annuel 2025</div></div>
+          <div class="card"><span class="tag tag-outline">PPTX</span><div class="card-title" style="margin-top:8px">Présentation institutionnelle</div></div>
+          <div class="card"><span class="tag tag-outline">XLSX</span><div class="card-title" style="margin-top:8px">Jeu de données — projets 2026</div></div>
+        </div>
+
+        <div style="padding:24px 32px;display:flex;justify-content:space-between;background:var(--color-surface)">
+          <span style="font-size:12px;opacity:.6">© 2026 LCIR</span>
+          <span style="font-size:12px;opacity:.6">contact@lcir.cm</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="dv-opt" id="1c">
+      <div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Poster manifeste — bandeau rouge plein cadre</div>
+      <div class="dv-card" style="width:1180px">
+        <div class="nav" style="background:var(--color-bg)">
+          <span class="nav-brand">LCIR</span>
+          <a href="#" aria-current="page">Accueil</a><a href="#">Mission</a><a href="#">Publications</a><a href="#">Projets</a><a href="#">Ressources</a><a href="#">Actualités</a><a href="#">Contact</a>
+          <span style="margin-left:auto;font-size:12px;opacity:.6">FR / EN</span>
+        </div>
+
+        <!-- Poster hero: full accent field -->
+        <div style="background:var(--color-accent);color:var(--color-bg);padding:80px 48px">
+          <div style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;opacity:.85;margin-bottom:20px">Laboratoire Camerounais d'Ingénierie du Raisonnement</div>
+          <h1 style="font-size:64px;max-width:11em;color:var(--color-bg);margin-bottom:24px">Le raisonnement, une infrastructure nationale.</h1>
+          <div style="display:flex;gap:12px">
+            <a class="btn" style="background:var(--color-bg);color:var(--color-accent-800)" href="#">Découvrir la mission</a>
+            <a class="btn" style="border:1px solid var(--color-bg);color:var(--color-bg)" href="#">Publications →</a>
+          </div>
+        </div>
+
+        <!-- Mission grid on ink/ground -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);border-bottom:2px solid var(--color-divider)">
+          <div style="padding:32px;border-right:2px solid var(--color-divider)"><h3>Recherche</h3><p style="font-size:13px;opacity:.75">Logique, inférence, systèmes de décision au service du pays.</p></div>
+          <div style="padding:32px;border-right:2px solid var(--color-divider)"><h3>Formation</h3><p style="font-size:13px;opacity:.75">Un vivier de chercheurs formés au Cameroun.</p></div>
+          <div style="padding:32px"><h3>Diffusion</h3><p style="font-size:13px;opacity:.75">Ressources publiées en accès libre.</p></div>
+        </div>
+
+        <!-- Projects strip -->
+        <div style="padding:32px;border-bottom:2px solid var(--color-divider)">
+          <h2 style="font-size:24px;margin-bottom:18px">Projets en cours</h2>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px">
+            <div class="card elev-sm" style="flex-direction:row;align-items:center;gap:20px">
+              <div class="ph" style="width:110px;height:80px;flex:none">visuel</div>
+              <div><div class="card-kicker">Projet ARIA</div><div class="card-title">Raisonnement appliqué à l'agriculture</div></div>
+            </div>
+            <div class="card elev-sm" style="flex-direction:row;align-items:center;gap:20px">
+              <div class="ph" style="width:110px;height:80px;flex:none">visuel</div>
+              <div><div class="card-kicker">Projet NOMOS</div><div class="card-title">Logique juridique computationnelle</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Publications + resources combined -->
+        <div style="display:grid;grid-template-columns:2fr 1fr;border-bottom:2px solid var(--color-divider)">
+          <div style="padding:32px;border-right:2px solid var(--color-divider)">
+            <h2 style="font-size:22px;margin-bottom:16px">Publications</h2>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div><span class="tag tag-accent">Cahier n°14</span><div style="font-size:14px;font-weight:600;margin-top:6px">Souveraineté numérique et raisonnement algorithmique</div></div>
+              <div class="hr" style="margin:0"></div>
+              <div><span class="tag tag-accent">Cahier n°13</span><div style="font-size:14px;font-weight:600;margin-top:6px">Logiques non-monotones en contexte agricole</div></div>
+            </div>
+          </div>
+          <div style="padding:32px">
+            <h2 style="font-size:22px;margin-bottom:16px">Ressources</h2>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <a class="btn btn-secondary btn-block" href="#">Rapport annuel — PDF</a>
+              <a class="btn btn-secondary btn-block" href="#">Présentation — PPTX</a>
+              <a class="btn btn-secondary btn-block" href="#">Données — XLSX</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:24px 32px;display:flex;justify-content:space-between;background:var(--color-surface)">
+          <span style="font-family:var(--font-heading);font-weight:800">LCIR</span>
+          <span style="font-size:12px;opacity:.6">Yaoundé, Cameroun — contact@lcir.cm</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p class="dv-next">Essayez : « je choisis <a class="dv-oid" href="#1a">1a</a> » · « mélanger le hero de <a class="dv-oid" href="#1c">1c</a> avec le sommaire de <a class="dv-oid" href="#1b">1b</a> » · « développer <a class="dv-oid" href="#1a">1a</a> en site complet bilingue »</p>
+</section>
+
+</x-dc>
+</body>
+</html>

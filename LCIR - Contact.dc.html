@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'Inter',system-ui,sans-serif}
+a{color:#c9932e;text-decoration:none}
+a:hover{color:#a3781f}
+.hr{height:1px;background:rgba(0,0,0,.12);border:none;margin:0}
+input,textarea{font-family:'Inter',system-ui,sans-serif}
+input:focus,textarea:focus{outline:2px solid #c9932e;outline-offset:1px}
+@media (max-width: 900px) {
+  .lc-nav{flex-wrap:wrap!important;gap:14px!important;padding:16px 20px!important}
+  .lc-nav-sub{display:none!important}
+  .lc-nav-pills{order:3;width:100%!important;justify-content:center!important;flex-wrap:wrap!important}
+  .lc-section{padding:40px 20px!important}
+  .lc-h1{font-size:36px!important}
+  .lc-contact-grid{grid-template-columns:1fr!important;gap:32px!important}
+  .lc-footer{flex-direction:column;align-items:flex-start!important;gap:14px!important}
+}
+</style>
+</helmet>
+
+<div style="background:#f8f2e3;color:#171410" data-screen-label="Contact">
+
+  <!-- NAV -->
+  <div class="lc-nav" style="display:flex;align-items:center;gap:28px;padding:18px 44px;border-bottom:1px solid rgba(0,0,0,.1);background:#f8f2e3;position:sticky;top:0;z-index:100">
+    <a href="LCIR - Accueil.dc.html" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit">
+      <img src="assets/logo-lcir.png" alt="LCIR" style="height:46px;width:auto">
+    </a>
+    <div class="lc-nav-pills" style="margin-left:20px;display:flex;gap:6px;align-items:center;border:1px solid rgba(0,0,0,.14);border-radius:999px;padding:8px 6px">
+      <a href="LCIR - Accueil.dc.html" style="padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em;color:#171410;transition:background .2s,color .2s" style-hover="background:#171410;color:#f8f2e3">ACCUEIL</a>
+      <a href="LCIR - A-propos.dc.html" style="padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em;color:#171410;transition:background .2s,color .2s" style-hover="background:#171410;color:#f8f2e3">MISSION</a>
+      <a href="LCIR - Publications.dc.html" style="padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em;color:#171410;transition:background .2s,color .2s" style-hover="background:#171410;color:#f8f2e3">PUBLICATIONS</a>
+      <a href="LCIR - Equipe.dc.html" style="padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em;color:#171410;transition:background .2s,color .2s" style-hover="background:#171410;color:#f8f2e3">ÉQUIPE</a>
+      <a href="LCIR - Accueil.dc.html#ressources" style="padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em;color:#171410;transition:background .2s,color .2s" style-hover="background:#171410;color:#f8f2e3">RESSOURCES</a>
+    </div>
+    <a href="LCIR - Contact.dc.html" style="margin-left:auto;font-size:12px;font-weight:800;letter-spacing:.05em;display:flex;align-items:center;gap:6px;border-bottom:1px solid #c9932e;padding-bottom:3px;color:#c9932e">CONTACT <span>→</span></a>
+  </div>
+
+  <!-- HERO -->
+  <div class="lc-section" style="padding:64px 44px 40px">
+    <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.1em;color:#c9932e;margin-bottom:22px">
+      <span style="width:7px;height:7px;border-radius:50%;background:#c9932e;display:inline-block"></span>CONTACT
+    </div>
+    <h1 class="lc-h1" style="font-size:52px;line-height:1.1;font-weight:800;margin:0 0 22px;max-width:16em">Parlons raisonnement, méthode et souveraineté.</h1>
+    <p style="font-size:17px;max-width:38em;color:rgba(23,20,16,.75);line-height:1.6;margin:0">Chercheurs, institutions, étudiants ou curieux : le LCIR répond à vos questions et accueille vos collaborations.</p>
+  </div>
+
+  <!-- CONTACT GRID -->
+  <div class="lc-section lc-contact-grid" style="padding:0 44px 64px;display:grid;grid-template-columns:1fr 1.3fr;gap:56px">
+    <div>
+      <div style="font-size:11px;font-weight:800;letter-spacing:.08em;color:#c9932e;margin-bottom:20px">COORDONNÉES</div>
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <div>
+          <div style="font-size:12px;font-weight:800;letter-spacing:.05em;color:rgba(23,20,16,.5);margin-bottom:4px">EMAIL</div>
+          <a href="mailto:contact@lcir.cm" style="font-size:18px;font-weight:700;color:#171410" style-hover="color:#c9932e">contact@lcir.cm</a>
+        </div>
+        <div class="hr"></div>
+        <div>
+          <div style="font-size:12px;font-weight:800;letter-spacing:.05em;color:rgba(23,20,16,.5);margin-bottom:4px">LOCALISATION</div>
+          <div style="font-size:18px;font-weight:700">Yaoundé, Cameroun</div>
+        </div>
+        <div class="hr"></div>
+        <div>
+          <div style="font-size:12px;font-weight:800;letter-spacing:.05em;color:rgba(23,20,16,.5);margin-bottom:4px">POUR LA PRESSE ET LES PARTENARIATS</div>
+          <div style="font-size:14px;color:rgba(23,20,16,.7);line-height:1.6">Précisez l'objet de votre demande dans le formulaire — publications, interventions, collaborations de recherche.</div>
+        </div>
+      </div>
+    </div>
+
+    <form action="mailto:contact@lcir.cm" method="post" enctype="text/plain" style="display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;gap:18px;flex-wrap:wrap">
+        <div style="flex:1;min-width:200px">
+          <label style="font-size:11px;font-weight:800;letter-spacing:.05em;color:rgba(23,20,16,.6);display:block;margin-bottom:8px">NOM</label>
+          <input name="nom" type="text" required style="width:100%;box-sizing:border-box;border:1px solid rgba(0,0,0,.2);border-radius:4px;padding:12px 14px;font-size:14px;background:#fff"/>
+        </div>
+        <div style="flex:1;min-width:200px">
+          <label style="font-size:11px;font-weight:800;letter-spacing:.05em;color:rgba(23,20,16,.6);display:block;margin-bottom:8px">EMAIL</label>
+          <input name="email" type="email" required style="width:100%;box-sizing:border-box;border:1px solid rgba(0,0,0,.2);border-radius:4px;padding:12px 14px;font-size:14px;background:#fff"/>
+        </div>
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:800;letter-spacing:.05em;color:rgba(23,20,16,.6);display:block;margin-bottom:8px">OBJET</label>
+        <input name="objet" type="text" style="width:100%;box-sizing:border-box;border:1px solid rgba(0,0,0,.2);border-radius:4px;padding:12px 14px;font-size:14px;background:#fff"/>
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:800;letter-spacing:.05em;color:rgba(23,20,16,.6);display:block;margin-bottom:8px">MESSAGE</label>
+        <textarea name="message" required rows="6" style="width:100%;box-sizing:border-box;border:1px solid rgba(0,0,0,.2);border-radius:4px;padding:12px 14px;font-size:14px;background:#fff;resize:vertical;font-family:inherit"></textarea>
+      </div>
+      <button type="submit" style="background:#171410;color:#f8f2e3;border:none;border-radius:999px;padding:16px 26px;font-size:12px;font-weight:800;letter-spacing:.05em;display:inline-flex;align-items:center;gap:10px;align-self:flex-start;cursor:pointer;transition:transform .2s,background .2s" style-hover="transform:translateY(-2px);background:#2a241a">ENVOYER LE MESSAGE <span>→</span></button>
+    </form>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="lc-footer" style="background:#100e0b;color:#f8f2e3;padding:32px 44px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
+    <div style="display:flex;align-items:center;gap:14px">
+      <svg width="30" height="30" viewBox="0 0 34 34" fill="none"><rect x="1" y="1" width="10" height="10" stroke="#f8f2e3" stroke-width="2.4"/><rect x="23" y="1" width="10" height="10" stroke="#f8f2e3" stroke-width="2.4"/><rect x="1" y="23" width="10" height="10" stroke="#f8f2e3" stroke-width="2.4"/><rect x="23" y="23" width="10" height="10" stroke="#f8f2e3" stroke-width="2.4"/><rect x="14" y="0" width="6" height="6" fill="#c9932e"/></svg>
+      <div style="font-weight:800;font-size:16px;letter-spacing:.06em">LCIR</div>
+      <div style="font-size:12px;color:rgba(247,242,230,.5)">LABORATOIRE CAMEROUNAIS D'INGÉNIERIE DU RAISONNEMENT</div>
+    </div>
+    <div style="display:flex;gap:24px;font-size:12px;font-weight:700;letter-spacing:.04em">
+      <a href="LCIR - A-propos.dc.html" style="color:#f8f2e3;transition:color .2s" style-hover="color:#c9932e">MISSION</a>
+      <a href="LCIR - Publications.dc.html" style="color:#f8f2e3;transition:color .2s" style-hover="color:#c9932e">PUBLICATIONS</a>
+      <a href="LCIR - Accueil.dc.html#ressources" style="color:#f8f2e3;transition:color .2s" style-hover="color:#c9932e">RESSOURCES</a>
+    </div>
+  </div>
+  <div style="background:#100e0b;color:rgba(247,242,230,.5);padding:0 44px 28px;font-size:12px">© 2026 LCIR · Observer. Comprendre. Construire.</div>
+
+</div>
+
+</x-dc>
+</body>
+</html>
