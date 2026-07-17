@@ -16,7 +16,7 @@ export const publications = [
     excerpt: "Analyse stratégique du corridor Limbé-Douala-Edéa-Kribi et de son rôle dans l'ancrage industriel et portuaire de la souveraineté économique camerounaise.",
     cover: 'assets/corridor-atlantique-cover.jpg',
     pdf: 'assets/corridor-atlantique.pdf',
-    read: 'assets/corridor-atlantique-lecture.html',
+    read: 'lire.html?src=assets/corridor-atlantique-lecture.html',
     published: true
   },
   {
@@ -30,7 +30,7 @@ export const publications = [
     excerpt: "Analyse systémique de la construction progressive des capacités productives, financières, bancaires et monétaires nécessaires à la souveraineté.",
     cover: 'assets/apres-cfa-cover.jpg',
     pdf: 'assets/apres-cfa.pdf',
-    read: 'assets/apres-cfa-lecture.html',
+    read: 'lire.html?src=assets/apres-cfa-lecture.html',
     published: true
   },
   {

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture en ligne — LCIR</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/logo-lcir.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{font-family:'Inter',system-ui,sans-serif;background:#100e0b}
+  /* Barre fixe : reste visible en permanence, y compris sur mobile */
+  .bar{position:fixed;top:0;left:0;right:0;height:64px;display:flex;align-items:center;gap:16px;
+       padding:0 20px;background:#f8f2e3;border-bottom:1px solid rgba(0,0,0,.12);z-index:10}
+  .brand{display:flex;align-items:center;flex:none;text-decoration:none}
+  .brand img{height:38px;width:auto;display:block}
+  .back{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.04em;
+        color:#171410;text-decoration:none;padding:9px 16px;border:1px solid rgba(0,0,0,.2);border-radius:999px;
+        white-space:nowrap;transition:background .2s,color .2s}
+  .back:hover{background:#171410;color:#f8f2e3;border-color:#171410}
+  .title{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#8a6614;
+         white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0}
+  .links{display:flex;gap:4px;align-items:center;flex:none}
+  .links a{font-size:12px;font-weight:700;letter-spacing:.03em;color:#171410;text-decoration:none;
+           padding:8px 14px;border-radius:999px;transition:background .2s,color .2s}
+  .links a:hover{background:#171410;color:#f8f2e3}
+  .frame{position:fixed;top:64px;left:0;right:0;bottom:0;width:100%;border:0;background:#faf9f5}
+  .err{position:fixed;inset:64px 0 0 0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+       gap:16px;color:#f8f2e3;text-align:center;padding:24px}
+  .err a{color:#c9932e;font-weight:800}
+  @media (max-width:760px){
+    .title{display:none}
+    .bar{gap:10px;padding:0 12px}
+    .links a{padding:8px 11px}
+    .brand img{height:32px}
+  }
+</style>
+</head>
+<body>
+  <div class="bar">
+    <a class="brand" href="index.html"><img src="assets/logo-lcir.png" alt="LCIR"></a>
+    <a class="back" href="publications.html"><span>&larr;</span> Publications</a>
+    <div class="title" id="title">Lecture en ligne</div>
+    <div class="links">
+      <a href="index.html">Accueil</a>
+      <a href="publications.html">Publications</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+  <iframe class="frame" id="frame" title="Document en lecture"></iframe>
+  <script>
+    (function(){
+      var params = new URLSearchParams(location.search);
+      var src = params.get('src') || '';
+      var titre = params.get('titre') || '';
+      // Sécurité : n'autorise que les documents locaux du dossier assets/
+      var ok = /^assets\/[A-Za-z0-9._-]+\.html$/.test(src);
+      var frame = document.getElementById('frame');
+      if (ok) {
+        frame.src = src;
+        if (titre) {
+          document.getElementById('title').textContent = titre;
+          document.title = titre + ' — LCIR';
+        }
+      } else {
+        frame.remove();
+        var d = document.createElement('div');
+        d.className = 'err';
+        d.innerHTML = '<div style="font-size:20px;font-weight:800">Document introuvable</div>' +
+          '<a href="publications.html">&larr; Retour aux publications</a>';
+        document.body.appendChild(d);
+      }
+    })();
+  </script>
+</body>
+</html>
