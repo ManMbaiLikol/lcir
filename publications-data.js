@@ -14,7 +14,7 @@ export const publications = [
     year: '2026',
     pages: null,
     excerpt: "Analyse stratégique du corridor Limbé-Douala-Edéa-Kribi et de son rôle dans l'ancrage industriel et portuaire de la souveraineté économique camerounaise.",
-    cover: 'assets/corridor-atlantique-cover.png',
+    cover: 'assets/corridor-atlantique-cover.jpg',
     pdf: 'assets/corridor-atlantique.pdf',
     read: 'assets/corridor-atlantique-lecture.html',
     published: true
@@ -28,7 +28,7 @@ export const publications = [
     year: '2026',
     pages: 26,
     excerpt: "Analyse systémique de la construction progressive des capacités productives, financières, bancaires et monétaires nécessaires à la souveraineté.",
-    cover: 'assets/apres-cfa-cover.png',
+    cover: 'assets/apres-cfa-cover.jpg',
     pdf: 'assets/apres-cfa.pdf',
     read: 'assets/apres-cfa-lecture.html',
     published: true
@@ -55,7 +55,7 @@ export const publications = [
     year: '2026',
     pages: null,
     excerpt: "Grands projets miniers, filière de l'or et ambitions industrielles : comment le Cameroun tente de transformer ses ressources du sous-sol en véritable levier de souveraineté économique.",
-    cover: 'assets/secteur-minier-cover.png',
+    cover: 'assets/secteur-minier-cover.jpg',
     pdf: 'assets/secteur-minier.pdf',
     published: true
   },
@@ -68,7 +68,7 @@ export const publications = [
     year: '2026',
     pages: null,
     excerpt: "Une lecture à l'aune de la souveraineté financière : ce que révèle l'implication de l'AFD dans le projet de mobilisation de 2 000 milliards FCFA porté par la Caisse des Dépôts et Consignations auprès de la diaspora camerounaise.",
-    cover: 'assets/afd-diaspora-cover.png',
+    cover: 'assets/afd-diaspora-cover.jpg',
     pdf: 'assets/afd-diaspora.pdf',
     published: true
   }

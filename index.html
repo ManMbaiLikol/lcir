@@ -342,7 +342,7 @@ html{scroll-behavior:smooth}
 class Component extends DCLogic {
   state = {
     pubs: [
-      { id:'apres-cfa', category:'cahier', number:'001', title:"Le Cameroun construit-il l'après-CFA ?", author:'Man Mbaï Likol', year:'2026', pages:26, excerpt:"Analyse systémique de la construction progressive des capacités productives, financières, bancaires et monétaires nécessaires à la souveraineté — par Man Mbaï Likol.", cover:'assets/apres-cfa-cover.png', pdf:'assets/apres-cfa.pdf', published:true }
+      { id:'apres-cfa', category:'cahier', number:'001', title:"Le Cameroun construit-il l'après-CFA ?", author:'Man Mbaï Likol', year:'2026', pages:26, excerpt:"Analyse systémique de la construction progressive des capacités productives, financières, bancaires et monétaires nécessaires à la souveraineté — par Man Mbaï Likol.", cover:'assets/apres-cfa-cover.jpg', pdf:'assets/apres-cfa.pdf', published:true }
     ]
   };
   async componentDidMount() {
@@ -358,7 +358,7 @@ class Component extends DCLogic {
     return {
       latestTitle: latest.title || '',
       latestExcerpt: latest.excerpt || '',
-      latestCover: latest.cover || 'assets/apres-cfa-cover.png',
+      latestCover: latest.cover || 'assets/apres-cfa-cover.jpg',
       latestPdf: latest.pdf || '#',
       latestBadge: latest.number ? (categoryLabels[latest.category] || '') + ' N°' + latest.number : (categoryLabels[latest.category] || ''),
       latestStripLabel: (categoryLabels[latest.category] || 'PUBLICATION') + (latest.number ? ' — ' : ' — ')
