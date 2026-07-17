@@ -27,7 +27,9 @@
   .links a{font-size:12px;font-weight:700;letter-spacing:.03em;color:#171410;text-decoration:none;
            padding:8px 14px;border-radius:999px;transition:background .2s,color .2s}
   .links a:hover{background:#171410;color:#f8f2e3}
-  .frame{position:fixed;top:64px;left:0;right:0;bottom:0;width:100%;border:0;background:#faf9f5}
+  /* Hauteur explicite : une iframe est un élément remplacé, top/bottom ne l'étirent pas. */
+  .frame{position:fixed;top:64px;left:0;display:block;width:100%;height:calc(100% - 64px);
+         border:0;background:#faf9f5}
   .err{position:fixed;inset:64px 0 0 0;display:flex;flex-direction:column;align-items:center;justify-content:center;
        gap:16px;color:#f8f2e3;text-align:center;padding:24px}
   .err a{color:#c9932e;font-weight:800}
@@ -36,6 +38,9 @@
     .bar{gap:10px;padding:0 12px}
     .links a{padding:8px 11px}
     .brand img{height:32px}
+    /* Le bouton Précédent mène déjà aux publications : on retire le doublon
+       pour que la barre tienne en largeur sans rogner « Contact ». */
+    .links a[href="publications.html"]{display:none}
   }
 </style>
 </head>
@@ -65,6 +70,57 @@
           document.getElementById('title').textContent = titre;
           document.title = titre + ' — LCIR';
         }
+
+        // Les documents sont des pages de largeur fixe (~864 px) : elles ne se
+        // reformatent pas. Sous cette largeur, on met l'iframe à l'échelle pour
+        // afficher la page entière plutôt que d'imposer un défilement latéral.
+        var DOC_WIDTH = 864, BAR = 64;
+
+        // Largeur à afficher, gouttière de la barre de défilement interne comprise
+        // (nulle sur mobile, ~15 px sur desktop) : sans elle la page est rognée.
+        function largeurRequise() {
+          var doc = frame.contentDocument;
+          var el = doc && doc.documentElement;
+          if (!el || !el.scrollWidth) return DOC_WIDTH;
+          var gouttiere = Math.max(0, frame.clientWidth - el.clientWidth);
+          return Math.max(DOC_WIDTH, el.scrollWidth + gouttiere);
+        }
+
+        function ajuster() {
+          var vw = document.documentElement.clientWidth;
+          var vh = window.innerHeight - BAR;
+          if (vw >= DOC_WIDTH) {
+            frame.style.width = '';
+            frame.style.height = '';
+            frame.style.transform = '';
+            return;
+          }
+          frame.style.transform = 'none';
+          frame.style.width = DOC_WIDTH + 'px';
+          var largeur = largeurRequise();
+          var s = vw / largeur;
+          frame.style.width = largeur + 'px';
+          frame.style.height = (vh / s) + 'px';
+          frame.style.transform = 'scale(' + s + ')';
+          frame.style.transformOrigin = 'top left';
+        }
+
+        // Le document se déballe après l'événement load, en plusieurs secondes :
+        // sa largeur n'est pas mesurable tout de suite. On réajuste jusqu'à ce
+        // qu'elle se stabilise (un observateur ne survivrait pas au déballage,
+        // qui remplace documentElement).
+        var derniere = -1, stables = 0;
+        var suivi = setInterval(function(){
+          var largeur = largeurRequise();
+          if (largeur === derniere) { stables++; } else { stables = 0; derniere = largeur; }
+          ajuster();
+          if (stables >= 3) clearInterval(suivi);
+        }, 400);
+        setTimeout(function(){ clearInterval(suivi); }, 30000);
+
+        ajuster();
+        window.addEventListener('resize', ajuster);
+        window.addEventListener('orientationchange', ajuster);
       } else {
         frame.remove();
         var d = document.createElement('div');
