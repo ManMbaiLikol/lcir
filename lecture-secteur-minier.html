@@ -192,6 +192,8 @@
       </div>
     </div>
 
+    <div id="next-pub" style="margin-top:40px"></div>
+
     <div class="backrow">
       <a class="back" href="publications.html"><span>←</span> Toutes les publications</a>
       <span class="share">LCIR · Observer. Comprendre. Construire.</span>
@@ -213,5 +215,9 @@
   </div>
   <div class="copyright">© 2026 LCIR · Observer. Comprendre. Construire.</div>
 
+  <script type="module">
+    import { mountNextCard } from './article-nav.js';
+    mountNextCard('secteur-minier', '#next-pub');
+  </script>
 </body>
 </html>

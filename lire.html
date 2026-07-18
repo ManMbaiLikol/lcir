@@ -131,5 +131,21 @@
       }
     })();
   </script>
+  <script type="module">
+    // Ajoute un lien « Suivant » vers le cahier suivant, dans la barre du haut.
+    import { pubByRead, nextPublication } from './article-nav.js';
+    (function(){
+      var src = new URLSearchParams(location.search).get('src') || '';
+      var cur = pubByRead(src);
+      var next = cur ? nextPublication(cur.id) : null;
+      var links = document.querySelector('.links');
+      if (!next || !links) return;
+      var a = document.createElement('a');
+      a.href = next.read;
+      a.title = next.title;
+      a.innerHTML = 'Suivant <span>&rarr;</span>';
+      links.appendChild(a);
+    })();
+  </script>
 </body>
 </html>

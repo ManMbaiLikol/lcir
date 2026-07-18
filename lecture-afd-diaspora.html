@@ -88,7 +88,7 @@
   <article class="wrap">
     <div class="kicker"><span class="dot"></span>ARTICLE · SOUVERAINETÉ FINANCIÈRE</div>
     <h1>Pourquoi l'AFD est-elle associée au projet de mobilisation de 2 000 milliards FCFA auprès de la diaspora ?</h1>
-    <div class="byline"><span>Par <strong>CDEC</strong></span><span>·</span><span>2026</span></div>
+    <div class="byline"><span>Par <strong>Man Mbaï Likol</strong></span><span>·</span><span>2026</span></div>
     <p style="font-size:15px;color:rgba(23,20,16,.6);margin:0 0 4px">Une lecture à l'aune de la souveraineté financière.</p>
 
     <img class="cover" src="assets/afd-diaspora-cover.jpg" alt="AFD et mobilisation de la diaspora">
@@ -176,6 +176,8 @@
       <div class="pullquote">« La souveraineté ne consiste pas à travailler seul. Elle consiste à conserver la maîtrise des décisions stratégiques. »</div>
     </div>
 
+    <div id="next-pub" style="margin-top:40px"></div>
+
     <div class="backrow">
       <a class="back" href="publications.html"><span>←</span> Toutes les publications</a>
       <span class="share">LCIR · Observer. Comprendre. Construire.</span>
@@ -197,5 +199,9 @@
   </div>
   <div class="copyright">© 2026 LCIR · Observer. Comprendre. Construire.</div>
 
+  <script type="module">
+    import { mountNextCard } from './article-nav.js';
+    mountNextCard('afd-diaspora', '#next-pub');
+  </script>
 </body>
 </html>

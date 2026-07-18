@@ -65,7 +65,7 @@ export const publications = [
     category: 'article',
     number: null,
     title: "Pourquoi l'AFD est-elle associée au projet de mobilisation de 2 000 milliards FCFA auprès de la diaspora ?",
-    author: 'CDEC',
+    author: 'Man Mbaï Likol',
     year: '2026',
     pages: null,
     excerpt: "Une lecture à l'aune de la souveraineté financière : ce que révèle l'implication de l'AFD dans le projet de mobilisation de 2 000 milliards FCFA porté par la Caisse des Dépôts et Consignations auprès de la diaspora camerounaise.",
