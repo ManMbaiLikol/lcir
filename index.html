@@ -126,7 +126,9 @@ html{scroll-behavior:smooth}
         <div style="position:relative;flex:1;padding:0 28px 28px;display:flex;flex-direction:column;justify-content:flex-end;margin-top:auto;background:linear-gradient(180deg,transparent,rgba(16,14,11,.9) 55%)">
           <div style="color:#f8f2e3;font-size:19px;font-weight:800;line-height:1.2;margin-bottom:14px">{{ latestTitle }}</div>
           <div style="display:flex;gap:10px;flex-wrap:wrap;align-self:flex-start">
-            <a href="{{ latestPdf }}" download style="background:#f8f2e3;color:#171410;border-radius:999px;padding:12px 20px;font-size:11px;font-weight:800;letter-spacing:.05em;display:inline-flex;align-items:center;gap:8px;transition:background .2s" style-hover="background:#c9932e">TÉLÉCHARGER LE PDF <span>↓</span></a>
+            <sc-if value="{{ latestPdf }}">
+              <a href="{{ latestPdf }}" download style="background:#f8f2e3;color:#171410;border-radius:999px;padding:12px 20px;font-size:11px;font-weight:800;letter-spacing:.05em;display:inline-flex;align-items:center;gap:8px;transition:background .2s" style-hover="background:#c9932e">TÉLÉCHARGER LE PDF <span>↓</span></a>
+            </sc-if>
             <sc-if value="{{ latestRead }}">
               <a href="{{ latestRead }}" style="background:transparent;border:1px solid #f8f2e3;color:#f8f2e3;border-radius:999px;padding:12px 20px;font-size:11px;font-weight:800;letter-spacing:.05em;display:inline-flex;align-items:center;gap:8px;transition:background .2s,color .2s" style-hover="background:#f8f2e3;color:#171410">LIRE EN LIGNE <span>→</span></a>
             </sc-if>
@@ -364,7 +366,7 @@ class Component extends DCLogic {
       latestTitle: latest.title || '',
       latestExcerpt: latest.excerpt || '',
       latestCover: latest.cover || 'assets/apres-cfa-cover.jpg',
-      latestPdf: latest.pdf || '#',
+      latestPdf: latest.pdf || '',
       latestRead: latest.read || '',
       latestBadge: latest.number ? (categoryLabels[latest.category] || '') + ' N°' + latest.number : (categoryLabels[latest.category] || ''),
       latestStripLabel: (categoryLabels[latest.category] || 'PUBLICATION') + (latest.number ? ' — ' : ' — ')

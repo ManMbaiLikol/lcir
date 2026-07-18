@@ -56,7 +56,8 @@ export const publications = [
     pages: null,
     excerpt: "Grands projets miniers, filière de l'or et ambitions industrielles : comment le Cameroun tente de transformer ses ressources du sous-sol en véritable levier de souveraineté économique.",
     cover: 'assets/secteur-minier-cover.jpg',
-    pdf: 'assets/secteur-minier.pdf',
+    pdf: null,
+    read: 'lecture-secteur-minier.html',
     published: true
   },
   {
@@ -69,7 +70,8 @@ export const publications = [
     pages: null,
     excerpt: "Une lecture à l'aune de la souveraineté financière : ce que révèle l'implication de l'AFD dans le projet de mobilisation de 2 000 milliards FCFA porté par la Caisse des Dépôts et Consignations auprès de la diaspora camerounaise.",
     cover: 'assets/afd-diaspora-cover.jpg',
-    pdf: 'assets/afd-diaspora.pdf',
+    pdf: null,
+    read: 'lecture-afd-diaspora.html',
     published: true
   }
 ];

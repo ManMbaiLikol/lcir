@@ -93,7 +93,9 @@ html{scroll-behavior:smooth}
         <div style="font-size:30px;font-weight:800;line-height:1.15">{{ latestTitle }}</div>
         <p style="font-size:14px;color:rgba(247,242,230,.7);line-height:1.6;margin:0">{{ latestExcerpt }}</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <a href="{{ latestPdf }}" download style="background:#c9932e;color:#171410;border-radius:999px;padding:14px 22px;font-size:12px;font-weight:800;letter-spacing:.05em;display:inline-flex;align-items:center;gap:10px;transition:background .2s" style-hover="background:#e7bb52">TÉLÉCHARGER (PDF) <span>↓</span></a>
+          <sc-if value="{{ latestPdf }}">
+            <a href="{{ latestPdf }}" download style="background:#c9932e;color:#171410;border-radius:999px;padding:14px 22px;font-size:12px;font-weight:800;letter-spacing:.05em;display:inline-flex;align-items:center;gap:10px;transition:background .2s" style-hover="background:#e7bb52">TÉLÉCHARGER (PDF) <span>↓</span></a>
+          </sc-if>
           <sc-if value="{{ latestRead }}">
             <a href="{{ latestRead }}" style="border:1px solid #f8f2e3;color:#f8f2e3;border-radius:999px;padding:14px 22px;font-size:12px;font-weight:800;letter-spacing:.05em;display:inline-flex;align-items:center;gap:10px;transition:background .2s,color .2s" style-hover="background:#f8f2e3;color:#171410">LIRE EN LIGNE <span>→</span></a>
           </sc-if>
@@ -127,7 +129,9 @@ html{scroll-behavior:smooth}
                   <sc-if value="{{ item.read }}">
                     <a href="{{ item.read }}" style="font-size:12px;font-weight:800;letter-spacing:.04em;display:inline-flex;gap:6px;transition:gap .2s" style-hover="gap:11px">LIRE EN LIGNE <span>→</span></a>
                   </sc-if>
-                  <a href="{{ item.pdf }}" download style="font-size:12px;font-weight:800;letter-spacing:.04em;display:inline-flex;gap:6px;transition:gap .2s" style-hover="gap:11px">TÉLÉCHARGER <span>↓</span></a>
+                  <sc-if value="{{ item.pdf }}">
+                    <a href="{{ item.pdf }}" download style="font-size:12px;font-weight:800;letter-spacing:.04em;display:inline-flex;gap:6px;transition:gap .2s" style-hover="gap:11px">TÉLÉCHARGER <span>↓</span></a>
+                  </sc-if>
                 </div>
               </sc-if>
             </div>
@@ -149,7 +153,9 @@ html{scroll-behavior:smooth}
           <div style="font-size:12px;color:rgba(23,20,16,.55)">{{ modalMeta }}</div>
           <p style="font-size:14px;line-height:1.6;color:rgba(23,20,16,.8);margin:0">{{ modalExcerpt }}</p>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <a href="{{ modalPdf }}" download style="background:#171410;color:#f8f2e3;border-radius:999px;padding:12px 20px;font-size:12px;font-weight:800;letter-spacing:.05em;display:inline-flex;align-items:center;gap:8px;transition:background .2s" style-hover="background:#2a241a">TÉLÉCHARGER LE PDF <span>↓</span></a>
+            <sc-if value="{{ modalPdf }}">
+              <a href="{{ modalPdf }}" download style="background:#171410;color:#f8f2e3;border-radius:999px;padding:12px 20px;font-size:12px;font-weight:800;letter-spacing:.05em;display:inline-flex;align-items:center;gap:8px;transition:background .2s" style-hover="background:#2a241a">TÉLÉCHARGER LE PDF <span>↓</span></a>
+            </sc-if>
             <sc-if value="{{ modalRead }}">
               <a href="{{ modalRead }}" style="border:1px solid #171410;color:#171410;border-radius:999px;padding:12px 20px;font-size:12px;font-weight:800;letter-spacing:.05em;display:inline-flex;align-items:center;gap:8px;transition:background .2s,color .2s" style-hover="background:#171410;color:#f8f2e3">LIRE EN LIGNE <span>→</span></a>
             </sc-if>
@@ -193,8 +199,8 @@ class Component extends DCLogic {
       { id:'corridor-atlantique', category:'cahier', number:'002', title:'Corridor Atlantique Camerounais (Limbé-Douala-Edéa-Kribi)', author:'Man Mbaï Likol', year:'2026', pages:null, excerpt:"Analyse stratégique du corridor Limbé-Douala-Edéa-Kribi et de son rôle dans l'ancrage industriel et portuaire de la souveraineté économique camerounaise.", cover:'assets/corridor-atlantique-cover.jpg', pdf:'assets/corridor-atlantique.pdf', read:'lire.html?src=assets/corridor-atlantique-lecture.html', published:true },
       { id:'apres-cfa', category:'cahier', number:'001', title:"Le Cameroun construit-il l'après-CFA ?", author:'Man Mbaï Likol', year:'2026', pages:26, excerpt:"Analyse systémique de la construction progressive des capacités productives, financières, bancaires et monétaires nécessaires à la souveraineté — par Man Mbaï Likol.", cover:'assets/apres-cfa-cover.jpg', pdf:'assets/apres-cfa.pdf', read:'lire.html?src=assets/apres-cfa-lecture.html', published:true },
       { id:'livre-001', category:'livre', number:null, title:'À paraître', author:'LCIR', year:'', pages:null, excerpt:'Premier ouvrage de fond du laboratoire, prochainement.', cover:null, pdf:null, published:false },
-      { id:'secteur-minier', category:'article', number:null, title:'Secteur minier : le Cameroun veut reprendre le contrôle de son sous-sol', author:'Man Mbaï Likol', year:'2026', pages:null, excerpt:"Grands projets miniers, filière de l'or et ambitions industrielles : comment le Cameroun tente de transformer ses ressources du sous-sol en véritable levier de souveraineté économique.", cover:'assets/secteur-minier-cover.jpg', pdf:'assets/secteur-minier.pdf', published:true },
-      { id:'afd-diaspora', category:'article', number:null, title:"Pourquoi l'AFD est-elle associée au projet de mobilisation de 2 000 milliards FCFA auprès de la diaspora ?", author:'CDEC', year:'2026', pages:null, excerpt:"Une lecture à l'aune de la souveraineté financière : ce que révèle l'implication de l'AFD dans le projet de mobilisation de 2 000 milliards FCFA porté par la Caisse des Dépôts et Consignations auprès de la diaspora camerounaise.", cover:'assets/afd-diaspora-cover.jpg', pdf:'assets/afd-diaspora.pdf', published:true }
+      { id:'secteur-minier', category:'article', number:null, title:'Secteur minier : le Cameroun veut reprendre le contrôle de son sous-sol', author:'Man Mbaï Likol', year:'2026', pages:null, excerpt:"Grands projets miniers, filière de l'or et ambitions industrielles : comment le Cameroun tente de transformer ses ressources du sous-sol en véritable levier de souveraineté économique.", cover:'assets/secteur-minier-cover.jpg', pdf:null, read:'lecture-secteur-minier.html', published:true },
+      { id:'afd-diaspora', category:'article', number:null, title:"Pourquoi l'AFD est-elle associée au projet de mobilisation de 2 000 milliards FCFA auprès de la diaspora ?", author:'CDEC', year:'2026', pages:null, excerpt:"Une lecture à l'aune de la souveraineté financière : ce que révèle l'implication de l'AFD dans le projet de mobilisation de 2 000 milliards FCFA porté par la Caisse des Dépôts et Consignations auprès de la diaspora camerounaise.", cover:'assets/afd-diaspora-cover.jpg', pdf:null, read:'lecture-afd-diaspora.html', published:true }
     ]
   };
   state = { ...this.state, modalItem: null };
@@ -219,7 +225,7 @@ class Component extends DCLogic {
           ...p,
           subLabel: singular[cat] + (p.number ? ' N°' + p.number : '') + (p.year ? ' · ÉDITION ' + p.year : ''),
           meta: p.published ? (p.author + (p.pages ? ' — ' + p.pages + ' pages' : '')) : 'Prochainement',
-          badgeText: p.published ? 'PDF' : '—',
+          badgeText: p.published ? (p.pdf ? 'PDF' : 'LIRE') : '—',
           rowOpacity: p.published ? 1 : 0.55,
           showThumb,
           hideThumb: !showThumb,
@@ -233,7 +239,7 @@ class Component extends DCLogic {
       latestTitle: latest.title || '',
       latestExcerpt: latest.excerpt || '',
       latestCover: latest.cover || 'assets/apres-cfa-cover.jpg',
-      latestPdf: latest.pdf || '#',
+      latestPdf: latest.pdf || '',
       latestRead: latest.read || '',
       latestBadge: latest.number ? (singular[latest.category] + ' N°' + latest.number) : (singular[latest.category] || ''),
       groups,
@@ -243,7 +249,7 @@ class Component extends DCLogic {
       modalExcerpt: modal ? modal.excerpt : '',
       modalMeta: modal ? (modal.author + (modal.year ? ' · ' + modal.year : '')) : '',
       modalKicker: modal ? (singular[modal.category] || '') : '',
-      modalPdf: modal ? modal.pdf : '#',
+      modalPdf: modal ? (modal.pdf || '') : '',
       modalRead: modal ? (modal.read || '') : '',
       closeModal: () => this.closeModal(),
       stopPropagation: (e) => e.stopPropagation()
