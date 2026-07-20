@@ -3,6 +3,14 @@
 // de ce tableau avec published:true — elle devient automatiquement la "dernière parution".
 // L'ordre des catégories sur la page Publications est toujours Livres → Cahiers → Articles,
 // quel que soit l'ordre ici : les livres sont toujours affichés en premier.
+//
+// Champ `theme` : classe la publication dans un dossier thématique sur la page
+// Publications (mode « Classer par : Thème »). Valeurs possibles :
+//   'monnaie'  → Souveraineté monétaire
+//   'corridor' → Corridor & industrie
+//   'mines'    → Mines & ressources
+//   'finance'  → Finance & diaspora
+// (Ces libellés sont définis dans publications.html — themeMeta / themeOrder.)
 
 export const publications = [
   {
@@ -17,6 +25,7 @@ export const publications = [
     cover: 'assets/corridor-atlantique-cover.jpg',
     pdf: 'assets/corridor-atlantique.pdf',
     read: 'lecture-corridor-atlantique.html',
+    theme: 'corridor',
     published: true
   },
   {
@@ -31,6 +40,7 @@ export const publications = [
     cover: 'assets/apres-cfa-cover.jpg',
     pdf: 'assets/apres-cfa.pdf',
     read: 'lecture-apres-cfa.html',
+    theme: 'monnaie',
     published: true
   },
   {
@@ -44,6 +54,7 @@ export const publications = [
     excerpt: 'Premier ouvrage de fond du laboratoire, prochainement.',
     cover: null,
     pdf: null,
+    theme: 'monnaie',
     published: false
   },
   {
@@ -58,6 +69,7 @@ export const publications = [
     cover: 'assets/secteur-minier-cover.jpg',
     pdf: null,
     read: 'lecture-secteur-minier.html',
+    theme: 'mines',
     published: true
   },
   {
@@ -72,6 +84,7 @@ export const publications = [
     cover: 'assets/afd-diaspora-cover.jpg',
     pdf: null,
     read: 'lecture-afd-diaspora.html',
+    theme: 'finance',
     published: true
   }
 ];

@@ -54,6 +54,7 @@ html{scroll-behavior:smooth}
   .lc-footer{flex-direction:column;align-items:flex-start!important;gap:14px!important}
   .lc-filter-bar{flex-direction:column;align-items:stretch!important}
   .lc-pills{justify-content:flex-start!important}
+  .lc-groupby{margin-left:0!important}
 }
 /* Recherche + filtres Publications */
 .lc-filter-bar{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:30px}
@@ -67,6 +68,12 @@ html{scroll-behavior:smooth}
 .lc-pill:hover{border-color:#c9932e;color:#8a6614}
 .lc-pill.active{background:#171410;color:#f8f2e3;border-color:#171410}
 .lc-pill.active:hover{color:#f8f2e3;border-color:#171410}
+.lc-groupby{display:flex;align-items:center;gap:10px;margin-left:auto}
+.lc-groupby-label{font-size:11px;font-weight:800;letter-spacing:.04em;color:rgba(23,20,16,.5);text-transform:uppercase}
+.lc-seg-group{display:inline-flex;border:1px solid rgba(0,0,0,.16);border-radius:999px;padding:3px;background:#fff}
+.lc-seg{cursor:pointer;font-family:inherit;font-size:12px;font-weight:800;letter-spacing:.03em;color:#171410;background:transparent;border:none;border-radius:999px;padding:8px 16px;transition:background .18s,color .18s}
+.lc-seg:hover{color:#8a6614}
+.lc-seg.active{background:#171410;color:#f8f2e3}
 .lc-count{font-size:12px;font-weight:700;letter-spacing:.04em;color:rgba(23,20,16,.5);margin-bottom:22px}
 .lc-noresults{padding:52px 10px;text-align:center;color:rgba(23,20,16,.6);font-size:15px;line-height:1.6}
 .lc-noresults b{color:#171410}
@@ -137,7 +144,7 @@ html{scroll-behavior:smooth}
   </div>
   </sc-if>
 
-  <!-- COLLECTION PAR CATÉGORIE : Livres → Cahiers stratégiques → Articles, toujours dans cet ordre -->
+  <!-- COLLECTION : regroupement par thème (dossiers) ou par type, avec recherche et filtres -->
   <div id="collection" class="lc-section" style="padding:0 44px 64px">
     <!-- Recherche + filtres -->
     <div class="lc-filter-bar">
@@ -149,6 +156,14 @@ html{scroll-behavior:smooth}
         <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
           <div class="lc-pill {{ f.activeClass }}" onClick="{{ f.handler }}">{{ f.label }}</div>
         </sc-for>
+      </div>
+      <div class="lc-groupby">
+        <span class="lc-groupby-label">Classer par</span>
+        <div class="lc-seg-group">
+          <sc-for list="{{ groupToggles }}" as="g" hint-placeholder-count="2">
+            <button type="button" class="lc-seg {{ g.activeClass }}" onClick="{{ g.handler }}">{{ g.label }}</button>
+          </sc-for>
+        </div>
       </div>
     </div>
     <div class="lc-count">{{ countLabel }}</div>
@@ -262,14 +277,14 @@ html{scroll-behavior:smooth}
 class Component extends DCLogic {
   state = {
     pubs: [
-      { id:'corridor-atlantique', category:'cahier', number:'002', title:'Corridor Atlantique Camerounais (Limbé-Douala-Edéa-Kribi)', author:'Man Mbaï Likol', year:'2026', pages:null, excerpt:"Analyse stratégique du corridor Limbé-Douala-Edéa-Kribi et de son rôle dans l'ancrage industriel et portuaire de la souveraineté économique camerounaise.", cover:'assets/corridor-atlantique-cover.jpg', pdf:'assets/corridor-atlantique.pdf', read:'lecture-corridor-atlantique.html', published:true },
-      { id:'apres-cfa', category:'cahier', number:'001', title:"Le Cameroun construit-il l'après-CFA ?", author:'Man Mbaï Likol', year:'2026', pages:26, excerpt:"Analyse systémique de la construction progressive des capacités productives, financières, bancaires et monétaires nécessaires à la souveraineté — par Man Mbaï Likol.", cover:'assets/apres-cfa-cover.jpg', pdf:'assets/apres-cfa.pdf', read:'lecture-apres-cfa.html', published:true },
-      { id:'livre-001', category:'livre', number:null, title:'À paraître', author:'LCIR', year:'', pages:null, excerpt:'Premier ouvrage de fond du laboratoire, prochainement.', cover:null, pdf:null, published:false },
-      { id:'secteur-minier', category:'article', number:null, title:'Secteur minier : le Cameroun veut reprendre le contrôle de son sous-sol', author:'Man Mbaï Likol', year:'2026', pages:null, excerpt:"Grands projets miniers, filière de l'or et ambitions industrielles : comment le Cameroun tente de transformer ses ressources du sous-sol en véritable levier de souveraineté économique.", cover:'assets/secteur-minier-cover.jpg', pdf:null, read:'lecture-secteur-minier.html', published:true },
-      { id:'afd-diaspora', category:'article', number:null, title:"Pourquoi l'AFD est-elle associée au projet de mobilisation de 2 000 milliards FCFA auprès de la diaspora ?", author:'Man Mbaï Likol', year:'2026', pages:null, excerpt:"Une lecture à l'aune de la souveraineté financière : ce que révèle l'implication de l'AFD dans le projet de mobilisation de 2 000 milliards FCFA porté par la Caisse des Dépôts et Consignations auprès de la diaspora camerounaise.", cover:'assets/afd-diaspora-cover.jpg', pdf:null, read:'lecture-afd-diaspora.html', published:true }
+      { id:'corridor-atlantique', category:'cahier', number:'002', title:'Corridor Atlantique Camerounais (Limbé-Douala-Edéa-Kribi)', author:'Man Mbaï Likol', year:'2026', pages:null, excerpt:"Analyse stratégique du corridor Limbé-Douala-Edéa-Kribi et de son rôle dans l'ancrage industriel et portuaire de la souveraineté économique camerounaise.", cover:'assets/corridor-atlantique-cover.jpg', pdf:'assets/corridor-atlantique.pdf', read:'lecture-corridor-atlantique.html', theme:'corridor', published:true },
+      { id:'apres-cfa', category:'cahier', number:'001', title:"Le Cameroun construit-il l'après-CFA ?", author:'Man Mbaï Likol', year:'2026', pages:26, excerpt:"Analyse systémique de la construction progressive des capacités productives, financières, bancaires et monétaires nécessaires à la souveraineté — par Man Mbaï Likol.", cover:'assets/apres-cfa-cover.jpg', pdf:'assets/apres-cfa.pdf', read:'lecture-apres-cfa.html', theme:'monnaie', published:true },
+      { id:'livre-001', category:'livre', number:null, title:'À paraître', author:'LCIR', year:'', pages:null, excerpt:'Premier ouvrage de fond du laboratoire, prochainement.', cover:null, pdf:null, theme:'monnaie', published:false },
+      { id:'secteur-minier', category:'article', number:null, title:'Secteur minier : le Cameroun veut reprendre le contrôle de son sous-sol', author:'Man Mbaï Likol', year:'2026', pages:null, excerpt:"Grands projets miniers, filière de l'or et ambitions industrielles : comment le Cameroun tente de transformer ses ressources du sous-sol en véritable levier de souveraineté économique.", cover:'assets/secteur-minier-cover.jpg', pdf:null, read:'lecture-secteur-minier.html', theme:'mines', published:true },
+      { id:'afd-diaspora', category:'article', number:null, title:"Pourquoi l'AFD est-elle associée au projet de mobilisation de 2 000 milliards FCFA auprès de la diaspora ?", author:'Man Mbaï Likol', year:'2026', pages:null, excerpt:"Une lecture à l'aune de la souveraineté financière : ce que révèle l'implication de l'AFD dans le projet de mobilisation de 2 000 milliards FCFA porté par la Caisse des Dépôts et Consignations auprès de la diaspora camerounaise.", cover:'assets/afd-diaspora-cover.jpg', pdf:null, read:'lecture-afd-diaspora.html', theme:'finance', published:true }
     ]
   };
-  state = { ...this.state, modalItem: null, query: '', filter: 'all', subEmail: '', subStatus: 'idle', subMsg: '' };
+  state = { ...this.state, modalItem: null, query: '', filter: 'all', groupBy: 'theme', subEmail: '', subStatus: 'idle', subMsg: '' };
   // === Inscription newsletter (MailerLite) ===
   // Remplacer ces deux valeurs par celles du snippet « embed » de ton compte MailerLite.
   // Elles apparaissent dans l'URL du formulaire : .../jsonp/ACCOUNT_ID/forms/FORM_ID/subscribe
@@ -280,6 +295,7 @@ class Component extends DCLogic {
   norm(s) { return (s == null ? '' : String(s)).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
   onSearchInput(e) { this.setState({ query: (e && e.target) ? e.target.value : '' }); }
   setFilter(f) { this.setState({ filter: f }); }
+  setGroupBy(g) { this.setState({ groupBy: g }); }
   onSubEmail(e) { this.setState({ subEmail: (e && e.target) ? e.target.value : '' }); }
   onSubKey(e) { if (e && e.key === 'Enter') { e.preventDefault(); this.subscribe(); } }
   async subscribe() {
@@ -314,6 +330,10 @@ class Component extends DCLogic {
     const labels = { livre: 'Livres', cahier: 'Cahiers stratégiques', article: 'Articles' };
     const pillLabels = { livre: 'Livres', cahier: 'Cahiers', article: 'Articles' };
     const singular = { livre: 'LIVRE', cahier: 'CAHIER STRATÉGIQUE', article: 'ARTICLE' };
+    // Dossiers thématiques (regroupement par thème). L'ordre définit l'affichage.
+    const themeMeta = { monnaie: 'Souveraineté monétaire', corridor: 'Corridor & industrie', mines: 'Mines & ressources', finance: 'Finance & diaspora' };
+    const themeOrder = ['monnaie', 'corridor', 'mines', 'finance'];
+    const groupBy = this.state.groupBy || 'theme';
     const latest = pubs.find(p => p.published) || pubs[0] || {};
 
     // Recherche + filtre par catégorie
@@ -324,7 +344,7 @@ class Component extends DCLogic {
       if (!q) return true;
       const hay = this.norm([
         p.title, p.excerpt, p.author, labels[p.category], singular[p.category],
-        p.number ? ('N°' + p.number) : '', p.year
+        themeMeta[p.theme] || '', p.number ? ('N°' + p.number) : '', p.year
       ].join(' '));
       return hay.indexOf(q) !== -1;
     };
@@ -345,22 +365,37 @@ class Component extends DCLogic {
     const noun = hasQuery ? 'résultat' : 'publication';
     const countLabel = n + ' ' + noun + (n > 1 ? 's' : '');
 
-    const groups = order.map(cat => {
-      const items = filtered.filter(p => p.category === cat).map(p => {
-        const showThumb = !!(p.published && p.cover);
-        return {
-          ...p,
-          subLabel: singular[cat] + (p.number ? ' N°' + p.number : '') + (p.year ? ' · ÉDITION ' + p.year : ''),
-          meta: p.published ? (p.author + (p.pages ? ' — ' + p.pages + ' pages' : '')) : 'Prochainement',
-          badgeText: p.published ? (p.pdf ? 'PDF' : 'LIRE') : '—',
-          rowOpacity: p.published ? 1 : 0.55,
-          showThumb,
-          hideThumb: !showThumb,
-          openHandler: () => this.openArticle(p)
-        };
-      });
-      return { cat, label: labels[cat], items };
-    }).filter(g => g.items.length > 0);
+    const toItem = (p) => {
+      const showThumb = !!(p.published && p.cover);
+      return {
+        ...p,
+        subLabel: singular[p.category] + (p.number ? ' N°' + p.number : '') + (p.year ? ' · ÉDITION ' + p.year : ''),
+        meta: p.published ? (p.author + (p.pages ? ' — ' + p.pages + ' pages' : '')) : 'Prochainement',
+        badgeText: p.published ? (p.pdf ? 'PDF' : 'LIRE') : '—',
+        rowOpacity: p.published ? 1 : 0.55,
+        showThumb,
+        hideThumb: !showThumb,
+        openHandler: () => this.openArticle(p)
+      };
+    };
+    let groups;
+    if (groupBy === 'theme') {
+      const known = {};
+      themeOrder.forEach(t => { known[t] = true; });
+      groups = themeOrder.map(t => ({
+        key: t, label: themeMeta[t], items: filtered.filter(p => p.theme === t).map(toItem)
+      })).filter(g => g.items.length > 0);
+      const others = filtered.filter(p => !known[p.theme]).map(toItem);
+      if (others.length) groups.push({ key: 'autres', label: 'Autres', items: others });
+    } else {
+      groups = order.map(cat => ({
+        key: cat, label: labels[cat], items: filtered.filter(p => p.category === cat).map(toItem)
+      })).filter(g => g.items.length > 0);
+    }
+    const groupToggles = [
+      { id: 'theme', label: 'Thème', activeClass: groupBy === 'theme' ? 'active' : '', handler: () => this.setGroupBy('theme') },
+      { id: 'type', label: 'Type', activeClass: groupBy === 'type' ? 'active' : '', handler: () => this.setGroupBy('type') }
+    ];
     const modal = this.state.modalItem;
     return {
       latestTitle: latest.title || '',
@@ -370,6 +405,7 @@ class Component extends DCLogic {
       latestRead: latest.read || '',
       latestBadge: latest.number ? (singular[latest.category] + ' N°' + latest.number) : (singular[latest.category] || ''),
       groups,
+      groupToggles,
       showFeatured: activeFilter === 'all' && !hasQuery,
       query: this.state.query || '',
       onSearch: (e) => this.onSearchInput(e),
