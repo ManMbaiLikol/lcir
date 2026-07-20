@@ -6,6 +6,7 @@
 //
 // Champ `theme` : classe la publication dans un dossier thématique sur la page
 // Publications (mode « Classer par : Thème »). Valeurs possibles :
+//   'raisonnement' → Raisonnement & prospective
 //   'monnaie'  → Souveraineté monétaire
 //   'corridor' → Corridor & industrie
 //   'mines'    → Mines & ressources
@@ -47,14 +48,14 @@ export const publications = [
     id: 'livre-001',
     category: 'livre',
     number: null,
-    title: 'À paraître',
+    title: "Le Séquençage de l'Intelligence",
     author: 'LCIR',
     year: '',
     pages: null,
     excerpt: 'Premier ouvrage de fond du laboratoire, prochainement.',
     cover: null,
     pdf: null,
-    theme: 'monnaie',
+    theme: 'raisonnement',
     published: false
   },
   {
