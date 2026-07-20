@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem('lcir-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <title>Le Cameroun construit-il l'après-CFA ? — Cahier stratégique N°001 — LCIR</title>
 <meta name="description" content="Analyse systémique de la construction progressive des capacités productives, financières, bancaires et monétaires nécessaires à la souveraineté camerounaise. Cahier stratégique N°001 du LCIR, par Man Mbaï Likol.">
 <link rel="canonical" href="https://manmbailikol.github.io/lcir/lecture-apres-cfa.html">
@@ -52,6 +53,7 @@
       <a href="index.html#ressources">RESSOURCES</a>
     </div>
     <a class="nav-contact" href="contact.html">CONTACT <span>→</span></a>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Basculer le thème clair/sombre"></button>
   </div>
 
   <article class="wrap">
@@ -320,6 +322,7 @@
   <script src="cite.js"></script>
   <script src="lecture-ux.js"></script>
   <script src="analytics.js"></script>
+  <script src="theme.js"></script>
   <script type="module">
     import { mountNextCard } from './article-nav.js';
     mountNextCard('apres-cfa', '#next-pub');

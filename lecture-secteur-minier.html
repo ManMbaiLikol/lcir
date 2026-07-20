@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem('lcir-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <title>Secteur minier : le Cameroun veut reprendre le contrôle de son sous-sol — LCIR</title>
 <meta name="description" content="Grands projets miniers, camerounisation des titres aurifères et durcissement des règles environnementales et fiscales : les contours d'une nouvelle politique minière camerounaise, analysés à l'aune de la souveraineté économique.">
 <link rel="canonical" href="https://manmbailikol.github.io/lcir/lecture-secteur-minier.html">
@@ -53,6 +54,7 @@
       <a href="index.html#ressources">RESSOURCES</a>
     </div>
     <a class="nav-contact" href="contact.html">CONTACT <span>→</span></a>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Basculer le thème clair/sombre"></button>
   </div>
 
   <article class="wrap">
@@ -187,6 +189,7 @@
   <script src="cite.js"></script>
   <script src="lecture-ux.js"></script>
   <script src="analytics.js"></script>
+  <script src="theme.js"></script>
   <script type="module">
     import { mountNextCard } from './article-nav.js';
     mountNextCard('secteur-minier', '#next-pub');

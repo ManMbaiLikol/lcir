@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem('lcir-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <title>Pourquoi l'AFD est-elle associée au projet de mobilisation de 2 000 milliards FCFA auprès de la diaspora ? — LCIR</title>
 <meta name="description" content="Une lecture à l'aune de la souveraineté financière : ce que révèle l'implication de l'AFD dans le projet de mobilisation de 2 000 milliards FCFA porté par la Caisse des Dépôts et Consignations auprès de la diaspora camerounaise.">
 <link rel="canonical" href="https://manmbailikol.github.io/lcir/lecture-afd-diaspora.html">
@@ -53,6 +54,7 @@
       <a href="index.html#ressources">RESSOURCES</a>
     </div>
     <a class="nav-contact" href="contact.html">CONTACT <span>→</span></a>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Basculer le thème clair/sombre"></button>
   </div>
 
   <article class="wrap">
@@ -177,6 +179,7 @@
   <script src="cite.js"></script>
   <script src="lecture-ux.js"></script>
   <script src="analytics.js"></script>
+  <script src="theme.js"></script>
   <script type="module">
     import { mountNextCard } from './article-nav.js';
     mountNextCard('afd-diaspora', '#next-pub');

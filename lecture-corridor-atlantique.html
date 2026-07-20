@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem('lcir-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <title>Le Corridor Atlantique Camerounais — Cahier stratégique N°002 — LCIR</title>
 <meta name="description" content="Idenau–Limbé–Douala–Édéa–Kribi : anatomie, données et perspectives d'une mégalopole industrielle en construction en Afrique centrale. Une lecture systémique de la souveraineté économique camerounaise.">
 <link rel="canonical" href="https://manmbailikol.github.io/lcir/lecture-corridor-atlantique.html">
@@ -52,6 +53,7 @@
       <a href="index.html#ressources">RESSOURCES</a>
     </div>
     <a class="nav-contact" href="contact.html">CONTACT <span>→</span></a>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Basculer le thème clair/sombre"></button>
   </div>
 
   <article class="wrap">
@@ -469,6 +471,7 @@
   <script src="cite.js"></script>
   <script src="lecture-ux.js"></script>
   <script src="analytics.js"></script>
+  <script src="theme.js"></script>
   <script type="module">
     import { mountNextCard } from './article-nav.js';
     mountNextCard('corridor-atlantique', '#next-pub');
