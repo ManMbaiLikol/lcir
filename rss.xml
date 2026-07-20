@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>LCIR — Publications</title>
+    <link>https://manmbailikol.github.io/lcir/publications.html</link>
+    <atom:link href="https://manmbailikol.github.io/lcir/rss.xml" rel="self" type="application/rss+xml" />
+    <description>Analyses de fond du Laboratoire Camerounais d'Ingénierie du Raisonnement : souveraineté économique, monétaire, industrielle et financière du Cameroun. Observer, comprendre, construire.</description>
+    <language>fr</language>
+    <copyright>© 2026 LCIR — Laboratoire Camerounais d'Ingénierie du Raisonnement</copyright>
+    <managingEditor>kamerdesignstyle@gmail.com (Man Mbaï Likol)</managingEditor>
+    <lastBuildDate>Mon, 20 Jul 2026 12:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://manmbailikol.github.io/lcir/assets/logo-lcir.png</url>
+      <title>LCIR — Publications</title>
+      <link>https://manmbailikol.github.io/lcir/publications.html</link>
+    </image>
+
+    <item>
+      <title>Corridor Atlantique Camerounais (Limbé-Douala-Edéa-Kribi)</title>
+      <link>https://manmbailikol.github.io/lcir/lecture-corridor-atlantique.html</link>
+      <guid isPermaLink="true">https://manmbailikol.github.io/lcir/lecture-corridor-atlantique.html</guid>
+      <dc:creator>Man Mbaï Likol</dc:creator>
+      <category>Cahier stratégique</category>
+      <description>Analyse stratégique du corridor Limbé-Douala-Edéa-Kribi et de son rôle dans l'ancrage industriel et portuaire de la souveraineté économique camerounaise.</description>
+    </item>
+
+    <item>
+      <title>Le Cameroun construit-il l'après-CFA ?</title>
+      <link>https://manmbailikol.github.io/lcir/lecture-apres-cfa.html</link>
+      <guid isPermaLink="true">https://manmbailikol.github.io/lcir/lecture-apres-cfa.html</guid>
+      <dc:creator>Man Mbaï Likol</dc:creator>
+      <category>Cahier stratégique</category>
+      <description>Analyse systémique de la construction progressive des capacités productives, financières, bancaires et monétaires nécessaires à la souveraineté.</description>
+    </item>
+
+    <item>
+      <title>Secteur minier : le Cameroun veut reprendre le contrôle de son sous-sol</title>
+      <link>https://manmbailikol.github.io/lcir/lecture-secteur-minier.html</link>
+      <guid isPermaLink="true">https://manmbailikol.github.io/lcir/lecture-secteur-minier.html</guid>
+      <dc:creator>Man Mbaï Likol</dc:creator>
+      <category>Article</category>
+      <description>Grands projets miniers, filière de l'or et ambitions industrielles : comment le Cameroun tente de transformer ses ressources du sous-sol en véritable levier de souveraineté économique.</description>
+    </item>
+
+    <item>
+      <title>Pourquoi l'AFD est-elle associée au projet de mobilisation de 2 000 milliards FCFA auprès de la diaspora ?</title>
+      <link>https://manmbailikol.github.io/lcir/lecture-afd-diaspora.html</link>
+      <guid isPermaLink="true">https://manmbailikol.github.io/lcir/lecture-afd-diaspora.html</guid>
+      <dc:creator>Man Mbaï Likol</dc:creator>
+      <category>Article</category>
+      <description>Une lecture à l'aune de la souveraineté financière : ce que révèle l'implication de l'AFD dans le projet de mobilisation de 2 000 milliards FCFA porté par la Caisse des Dépôts et Consignations auprès de la diaspora camerounaise.</description>
+    </item>
+
+  </channel>
+</rss>
