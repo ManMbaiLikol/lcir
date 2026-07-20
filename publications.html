@@ -69,6 +69,19 @@ html{scroll-behavior:smooth}
 .lc-count{font-size:12px;font-weight:700;letter-spacing:.04em;color:rgba(23,20,16,.5);margin-bottom:22px}
 .lc-noresults{padding:52px 10px;text-align:center;color:rgba(23,20,16,.6);font-size:15px;line-height:1.6}
 .lc-noresults b{color:#171410}
+/* Inscription newsletter (bandeau doré) */
+.lc-closing-sub{font-size:14px;color:rgba(23,20,16,.72);margin-top:12px;max-width:420px;line-height:1.5}
+.lc-sub{display:flex;flex-direction:column;gap:10px;min-width:300px}
+.lc-sub-form{display:flex;gap:10px;background:rgba(16,14,11,.06);padding:6px;border-radius:999px;border:1px solid rgba(16,14,11,.18)}
+.lc-sub-input{flex:1;min-width:0;font-family:inherit;font-size:15px;padding:12px 18px;border:none;background:transparent;color:#171410;outline:none}
+.lc-sub-input::placeholder{color:rgba(23,20,16,.5)}
+.lc-sub-btn{cursor:pointer;white-space:nowrap;font-family:inherit;font-size:12px;font-weight:800;letter-spacing:.05em;color:#f8f2e3;background:#171410;border:none;border-radius:999px;padding:14px 24px;transition:transform .2s,opacity .2s}
+.lc-sub-btn:hover{transform:translateY(-1px)}
+.lc-sub-btn:disabled{opacity:.55;cursor:default;transform:none}
+.lc-sub-ok{font-size:15px;font-weight:700;color:#171410;background:rgba(16,14,11,.08);border:1px solid rgba(16,14,11,.2);border-radius:14px;padding:16px 20px;line-height:1.5}
+.lc-sub-err{font-size:13px;font-weight:700;color:#8a1c14;padding-left:8px}
+.lc-sub-note{font-size:12px;color:rgba(23,20,16,.55);padding-left:8px}
+@media(max-width:820px){.lc-sub{width:100%}.lc-sub-form{flex-direction:column;border-radius:18px;background:transparent;border:none;padding:0}.lc-sub-input{background:rgba(16,14,11,.06);border-radius:999px;border:1px solid rgba(16,14,11,.18)}.lc-sub-btn{padding:14px 24px}}
 </style>
 </helmet>
 
@@ -206,8 +219,23 @@ html{scroll-behavior:smooth}
     <div>
       <div style="font-size:12px;font-weight:800;letter-spacing:.06em;color:#171410;margin-bottom:10px">UNE NOUVELLE ÉTUDE, RÉGULIÈREMENT.</div>
       <div class="lc-closing-title" style="font-size:48px;font-weight:800;color:#171410">Soyez informé des parutions.</div>
+      <div class="lc-closing-sub">Recevez chaque nouvelle étude du laboratoire directement par e-mail. Analyses de fond, zéro spam, désinscription en un clic.</div>
     </div>
-    <a href="contact.html" style="background:#171410;color:#f8f2e3;border-radius:999px;padding:16px 26px;font-size:12px;font-weight:800;letter-spacing:.05em;display:inline-flex;align-items:center;gap:10px;transition:transform .2s" style-hover="transform:translateY(-2px) scale(1.03)">NOUS CONTACTER <span>→</span></a>
+    <div class="lc-sub">
+      <sc-if value="{{ subSuccess }}">
+        <div class="lc-sub-ok">✓ {{ subMsg }}</div>
+      </sc-if>
+      <sc-if value="{{ subFormVisible }}">
+        <div class="lc-sub-form">
+          <input type="email" class="lc-sub-input" placeholder="Votre adresse e-mail" value="{{ subEmail }}" onInput="{{ onSubEmail }}" onKeydown="{{ onSubKey }}" aria-label="Votre adresse e-mail">
+          <button type="button" class="lc-sub-btn" onClick="{{ onSubscribe }}" disabled="{{ subDisabled }}">{{ subBtnLabel }}</button>
+        </div>
+        <sc-if value="{{ subError }}">
+          <div class="lc-sub-err">{{ subMsg }}</div>
+        </sc-if>
+        <div class="lc-sub-note">En vous inscrivant, vous acceptez de recevoir les publications de LCIR par e-mail.</div>
+      </sc-if>
+    </div>
   </div>
 
   <!-- FOOTER -->
@@ -239,12 +267,39 @@ class Component extends DCLogic {
       { id:'afd-diaspora', category:'article', number:null, title:"Pourquoi l'AFD est-elle associée au projet de mobilisation de 2 000 milliards FCFA auprès de la diaspora ?", author:'Man Mbaï Likol', year:'2026', pages:null, excerpt:"Une lecture à l'aune de la souveraineté financière : ce que révèle l'implication de l'AFD dans le projet de mobilisation de 2 000 milliards FCFA porté par la Caisse des Dépôts et Consignations auprès de la diaspora camerounaise.", cover:'assets/afd-diaspora-cover.jpg', pdf:null, read:'lecture-afd-diaspora.html', published:true }
     ]
   };
-  state = { ...this.state, modalItem: null, query: '', filter: 'all' };
+  state = { ...this.state, modalItem: null, query: '', filter: 'all', subEmail: '', subStatus: 'idle', subMsg: '' };
+  // === Inscription newsletter (MailerLite) ===
+  // Remplacer ces deux valeurs par celles du snippet « embed » de ton compte MailerLite.
+  // Elles apparaissent dans l'URL du formulaire : .../jsonp/ACCOUNT_ID/forms/FORM_ID/subscribe
+  MAILERLITE_ACCOUNT = '2521453';
+  MAILERLITE_FORM = '193540420289955186';
   openArticle(item) { this.setState({ modalItem: item }); }
   closeModal() { this.setState({ modalItem: null }); }
   norm(s) { return (s == null ? '' : String(s)).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
   onSearchInput(e) { this.setState({ query: (e && e.target) ? e.target.value : '' }); }
   setFilter(f) { this.setState({ filter: f }); }
+  onSubEmail(e) { this.setState({ subEmail: (e && e.target) ? e.target.value : '' }); }
+  onSubKey(e) { if (e && e.key === 'Enter') { e.preventDefault(); this.subscribe(); } }
+  async subscribe() {
+    if (this.state.subStatus === 'loading') return;
+    const email = (this.state.subEmail || '').trim();
+    if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      this.setState({ subStatus: 'error', subMsg: 'Merci d’entrer une adresse e-mail valide.' });
+      return;
+    }
+    this.setState({ subStatus: 'loading', subMsg: '' });
+    try {
+      const body = new URLSearchParams();
+      body.append('fields[email]', email);
+      body.append('ml-submit', '1');
+      body.append('anticsrf', 'true');
+      const url = 'https://assets.mailerlite.com/jsonp/' + this.MAILERLITE_ACCOUNT + '/forms/' + this.MAILERLITE_FORM + '/subscribe';
+      await fetch(url, { method: 'POST', mode: 'no-cors', body });
+      this.setState({ subStatus: 'success', subEmail: '', subMsg: 'Merci ! Vérifiez votre boîte mail pour confirmer votre inscription.' });
+    } catch (err) {
+      this.setState({ subStatus: 'error', subMsg: 'Une erreur est survenue. Merci de réessayer dans un instant.' });
+    }
+  }
   async componentDidMount() {
     try {
       const mod = await import('./publications-data.js');
@@ -319,6 +374,16 @@ class Component extends DCLogic {
       filters,
       countLabel,
       noResults: n === 0,
+      subEmail: this.state.subEmail || '',
+      onSubEmail: (e) => this.onSubEmail(e),
+      onSubKey: (e) => this.onSubKey(e),
+      onSubscribe: () => this.subscribe(),
+      subSuccess: this.state.subStatus === 'success',
+      subError: this.state.subStatus === 'error',
+      subFormVisible: this.state.subStatus !== 'success',
+      subDisabled: this.state.subStatus === 'loading',
+      subBtnLabel: this.state.subStatus === 'loading' ? 'ENVOI…' : "S'INSCRIRE",
+      subMsg: this.state.subMsg || '',
       isModalOpen: !!modal,
       modalCover: modal ? modal.cover : '',
       modalTitle: modal ? modal.title : '',
