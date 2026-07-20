@@ -57,6 +57,24 @@ thead th{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppe
 tbody tr:hover{background:rgba(201,147,46,.06)}
 td:first-child,th:first-child{font-weight:600}
 
+/* Barre de progression de lecture */
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:0;background:#c9932e;z-index:200;transition:width .08s linear}
+
+/* Sommaire ancré */
+.toc{margin:34px 0;border:1px solid rgba(0,0,0,.14);border-radius:8px;background:rgba(23,20,16,.02)}
+.toc>summary{cursor:pointer;list-style:none;padding:15px 18px;font-size:11px;font-weight:800;letter-spacing:.08em;color:#8a6614;display:flex;align-items:center;justify-content:space-between}
+.toc>summary::-webkit-details-marker{display:none}
+.toc>summary::after{content:"\25be";transition:transform .2s;color:#8a6614;font-size:14px}
+.toc[open]>summary::after{transform:rotate(180deg)}
+.toc ol{list-style:none;margin:0;padding:2px 8px 12px;counter-reset:toc}
+.toc ol li{counter-increment:toc;padding:0}
+.toc ol li::before{content:none}
+.toc a{display:block;padding:8px 12px 8px 44px;position:relative;font-size:14px;font-weight:600;color:#171410;border-radius:5px;line-height:1.35;transition:background .15s,color .15s}
+.toc a::before{content:counter(toc,decimal-leading-zero);position:absolute;left:14px;top:8px;font-size:11px;font-weight:800;color:#8a6614;font-variant-numeric:tabular-nums}
+.toc a:hover{background:rgba(201,147,46,.1)}
+.toc a.active{background:#171410;color:#f8f2e3}
+.toc a.active::before{color:#e7bb52}
+
 /* Graphiques en barres (sans dépendance) */
 .chart{margin:30px 0}
 .chart-cap{font-size:11px;font-weight:800;letter-spacing:.06em;color:#8a6614;margin-bottom:20px;line-height:1.4}
