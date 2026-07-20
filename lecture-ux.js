@@ -53,6 +53,31 @@
     body.insertBefore(details, headings[0]);
   }
 
+  // --- Notes de bas de page ancrées (actif seulement si le balisage est présent) ---
+  // Patron : dans le texte  <sup class="fn-ref" id="fnref-1"><a href="#fn-1"></a></sup>
+  //          en fin de body  <ol class="footnotes"><li id="fn-1">Texte de la note.</li></ol>
+  // La numérotation et les liens de retour (↩) sont ajoutés automatiquement.
+  var fnRefs = Array.prototype.slice.call(body.querySelectorAll('.fn-ref'));
+  fnRefs.forEach(function (ref, i) {
+    if (!ref.id) ref.id = 'fnref-' + (i + 1);
+    var link = ref.matches('a') ? ref : ref.querySelector('a');
+    if (link && !link.textContent.trim()) link.textContent = String(i + 1);
+  });
+  var fnList = body.querySelector('.footnotes');
+  if (fnList) {
+    Array.prototype.slice.call(fnList.querySelectorAll('li')).forEach(function (li) {
+      if (!li.id || li.querySelector('.fn-back')) return;
+      var num = li.id.replace(/^fn-?/, '');
+      var back = document.createElement('a');
+      back.className = 'fn-back';
+      back.href = '#fnref-' + num;
+      back.setAttribute('aria-label', 'Retour au texte');
+      back.textContent = '↩';
+      li.appendChild(document.createTextNode(' '));
+      li.appendChild(back);
+    });
+  }
+
   // --- Barre de progression de lecture ---
   var bar = document.createElement('div');
   bar.className = 'reading-progress';

@@ -1,5 +1,6 @@
 /* Design partagé des pages de lecture LCIR (articles et cahiers). */
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{margin:0;font-family:'Inter',system-ui,sans-serif;background:#f8f2e3;color:#171410;-webkit-font-smoothing:antialiased}
 a{color:#8a6614;text-decoration:none}
 a:hover{color:#a3781f}
@@ -141,6 +142,26 @@ blockquote cite{display:block;font-style:normal;font-family:'Inter',sans-serif;f
 .follow-btn.whatsapp{background:#25D366}
 .follow-btn.telegram{background:#229ED9}
 .follow-btn:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.18)}
+
+/* Citer ce cahier / cet article : référence prête à copier */
+.cite{margin-top:36px;padding:22px 24px;border:1px solid rgba(0,0,0,.14);border-left:3px solid #c9932e;border-radius:8px;background:rgba(201,147,46,.05)}
+.cite-label{font-size:11px;font-weight:800;letter-spacing:.08em;color:#8a6614;margin-bottom:12px}
+.cite-text{font-family:'Newsreader',Georgia,serif;font-size:15.5px;line-height:1.65;color:#171410;margin-bottom:16px}
+.cite-btn{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.03em;color:#171410;background:transparent;border:1px solid rgba(0,0,0,.2);border-radius:999px;padding:10px 16px;cursor:pointer;transition:background .2s,color .2s,border-color .2s;font-family:inherit}
+.cite-btn svg{width:15px;height:15px;fill:currentColor}
+.cite-btn:hover{background:#171410;color:#f8f2e3;border-color:#171410}
+.cite-btn.copied{background:#1f7a4d;color:#fff;border-color:#1f7a4d}
+
+/* Notes de bas de page ancrées */
+.fn-ref{font-weight:700;line-height:0;white-space:nowrap}
+.fn-ref a{color:#8a6614;text-decoration:none;padding:0 1px}
+.fn-ref a:hover{text-decoration:underline}
+.footnotes{margin-top:34px;padding-top:22px;border-top:1px solid rgba(0,0,0,.14);font-size:14px;line-height:1.65;color:rgba(23,20,16,.82)}
+.footnotes li{margin-bottom:10px;scroll-margin-top:80px}
+.footnotes li:target{background:rgba(201,147,46,.16);border-radius:6px;padding:8px 12px;margin:0 -12px 10px}
+.fn-back{margin-left:6px;color:#8a6614;text-decoration:none;font-weight:700}
+.fn-back:hover{color:#a3781f}
+.fn-ref:target{background:rgba(201,147,46,.2);border-radius:4px}
 
 /* Bas de page : retour + navigation suivante */
 .backrow{margin-top:34px;padding-top:26px;border-top:1px solid rgba(0,0,0,.14);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
