@@ -51,7 +51,24 @@ html{scroll-behavior:smooth}
   .lc-closing{padding:40px 20px!important;text-align:center;justify-content:center!important}
   .lc-closing-title{font-size:32px!important}
   .lc-footer{flex-direction:column;align-items:flex-start!important;gap:14px!important}
+  .lc-filter-bar{flex-direction:column;align-items:stretch!important}
+  .lc-pills{justify-content:flex-start!important}
 }
+/* Recherche + filtres Publications */
+.lc-filter-bar{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:30px}
+.lc-search-wrap{position:relative;flex:1 1 260px;min-width:220px}
+.lc-search{width:100%;box-sizing:border-box;font-family:inherit;font-size:15px;padding:13px 18px 13px 44px;border:1px solid rgba(0,0,0,.16);border-radius:999px;background:#fff;color:#171410;outline:none;transition:border-color .2s,box-shadow .2s}
+.lc-search::placeholder{color:rgba(23,20,16,.4)}
+.lc-search:focus{border-color:#c9932e;box-shadow:0 0 0 3px rgba(201,147,46,.15)}
+.lc-search-ico{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#8a6614;font-size:17px;pointer-events:none;line-height:1}
+.lc-pills{display:flex;gap:8px;flex-wrap:wrap}
+.lc-pill{cursor:pointer;user-select:none;font-size:12px;font-weight:800;letter-spacing:.04em;padding:11px 18px;border-radius:999px;border:1px solid rgba(0,0,0,.16);color:#171410;background:transparent;transition:background .18s,color .18s,border-color .18s}
+.lc-pill:hover{border-color:#c9932e;color:#8a6614}
+.lc-pill.active{background:#171410;color:#f8f2e3;border-color:#171410}
+.lc-pill.active:hover{color:#f8f2e3;border-color:#171410}
+.lc-count{font-size:12px;font-weight:700;letter-spacing:.04em;color:rgba(23,20,16,.5);margin-bottom:22px}
+.lc-noresults{padding:52px 10px;text-align:center;color:rgba(23,20,16,.6);font-size:15px;line-height:1.6}
+.lc-noresults b{color:#171410}
 </style>
 </helmet>
 
@@ -82,6 +99,7 @@ html{scroll-behavior:smooth}
   </div>
 
   <!-- FEATURED PUBLICATION (dernière parution, toutes catégories confondues) -->
+  <sc-if value="{{ showFeatured }}">
   <div class="lc-section" style="padding:0 44px 56px">
     <div class="lc-pub-feature" style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:6px;overflow:hidden">
       <div style="background-image:url('{{ latestCover }}');background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#171410;min-height:460px;transition:transform .3s" style-hover="transform:scale(1.015)"></div>
@@ -103,9 +121,24 @@ html{scroll-behavior:smooth}
       </div>
     </div>
   </div>
+  </sc-if>
 
   <!-- COLLECTION PAR CATÉGORIE : Livres → Cahiers stratégiques → Articles, toujours dans cet ordre -->
   <div id="collection" class="lc-section" style="padding:0 44px 64px">
+    <!-- Recherche + filtres -->
+    <div class="lc-filter-bar">
+      <div class="lc-search-wrap">
+        <span class="lc-search-ico">⌕</span>
+        <input type="text" class="lc-search" placeholder="Rechercher par titre, thème, auteur…" value="{{ query }}" onInput="{{ onSearch }}" aria-label="Rechercher une publication">
+      </div>
+      <div class="lc-pills">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+          <div class="lc-pill {{ f.activeClass }}" onClick="{{ f.handler }}">{{ f.label }}</div>
+        </sc-for>
+      </div>
+    </div>
+    <div class="lc-count">{{ countLabel }}</div>
+
     <sc-for list="{{ groups }}" as="group" hint-placeholder-count="3">
       <div style="margin-bottom:48px">
         <div style="font-size:11px;font-weight:800;letter-spacing:.08em;color:#8a6614;margin-bottom:20px">{{ group.label }}</div>
@@ -139,6 +172,9 @@ html{scroll-behavior:smooth}
         </sc-for>
       </div>
     </sc-for>
+    <sc-if value="{{ noResults }}">
+      <div class="lc-noresults">Aucune publication ne correspond à <b>« {{ query }} »</b>.<br>Essayez un autre terme ou réinitialisez les filtres.</div>
+    </sc-if>
   </div>
 
   <!-- MODAL RÉSUMÉ ARTICLE -->
@@ -203,9 +239,12 @@ class Component extends DCLogic {
       { id:'afd-diaspora', category:'article', number:null, title:"Pourquoi l'AFD est-elle associée au projet de mobilisation de 2 000 milliards FCFA auprès de la diaspora ?", author:'Man Mbaï Likol', year:'2026', pages:null, excerpt:"Une lecture à l'aune de la souveraineté financière : ce que révèle l'implication de l'AFD dans le projet de mobilisation de 2 000 milliards FCFA porté par la Caisse des Dépôts et Consignations auprès de la diaspora camerounaise.", cover:'assets/afd-diaspora-cover.jpg', pdf:null, read:'lecture-afd-diaspora.html', published:true }
     ]
   };
-  state = { ...this.state, modalItem: null };
+  state = { ...this.state, modalItem: null, query: '', filter: 'all' };
   openArticle(item) { this.setState({ modalItem: item }); }
   closeModal() { this.setState({ modalItem: null }); }
+  norm(s) { return (s == null ? '' : String(s)).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+  onSearchInput(e) { this.setState({ query: (e && e.target) ? e.target.value : '' }); }
+  setFilter(f) { this.setState({ filter: f }); }
   async componentDidMount() {
     try {
       const mod = await import('./publications-data.js');
@@ -216,10 +255,41 @@ class Component extends DCLogic {
     const pubs = this.state.pubs || [];
     const order = ['livre', 'cahier', 'article'];
     const labels = { livre: 'Livres', cahier: 'Cahiers stratégiques', article: 'Articles' };
+    const pillLabels = { livre: 'Livres', cahier: 'Cahiers', article: 'Articles' };
     const singular = { livre: 'LIVRE', cahier: 'CAHIER STRATÉGIQUE', article: 'ARTICLE' };
     const latest = pubs.find(p => p.published) || pubs[0] || {};
+
+    // Recherche + filtre par catégorie
+    const q = this.norm(this.state.query);
+    const activeFilter = this.state.filter || 'all';
+    const matches = (p) => {
+      if (activeFilter !== 'all' && p.category !== activeFilter) return false;
+      if (!q) return true;
+      const hay = this.norm([
+        p.title, p.excerpt, p.author, labels[p.category], singular[p.category],
+        p.number ? ('N°' + p.number) : '', p.year
+      ].join(' '));
+      return hay.indexOf(q) !== -1;
+    };
+    const filtered = pubs.filter(matches);
+
+    // Pilules de filtre : Tout + catégories réellement présentes
+    const presentCats = order.filter(cat => pubs.some(p => p.category === cat));
+    const filterDefs = [{ id: 'all', label: 'Tout' }].concat(presentCats.map(cat => ({ id: cat, label: pillLabels[cat] })));
+    const filters = filterDefs.map(fd => ({
+      id: fd.id,
+      label: fd.label,
+      activeClass: activeFilter === fd.id ? 'active' : '',
+      handler: () => this.setFilter(fd.id)
+    }));
+
+    const hasQuery = !!(this.state.query && this.state.query.trim());
+    const n = filtered.length;
+    const noun = hasQuery ? 'résultat' : 'publication';
+    const countLabel = n + ' ' + noun + (n > 1 ? 's' : '');
+
     const groups = order.map(cat => {
-      const items = pubs.filter(p => p.category === cat).map(p => {
+      const items = filtered.filter(p => p.category === cat).map(p => {
         const showThumb = !!(p.published && p.cover);
         return {
           ...p,
@@ -243,6 +313,12 @@ class Component extends DCLogic {
       latestRead: latest.read || '',
       latestBadge: latest.number ? (singular[latest.category] + ' N°' + latest.number) : (singular[latest.category] || ''),
       groups,
+      showFeatured: activeFilter === 'all' && !hasQuery,
+      query: this.state.query || '',
+      onSearch: (e) => this.onSearchInput(e),
+      filters,
+      countLabel,
+      noResults: n === 0,
       isModalOpen: !!modal,
       modalCover: modal ? modal.cover : '',
       modalTitle: modal ? modal.title : '',
