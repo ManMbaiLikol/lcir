@@ -1,0 +1,71 @@
+# Configuration Decap CMS — catalogue des publications du LCIR.
+#
+# ÉDITION EN LOCAL (recommandé, aucun compte ni serveur d'authentification) :
+#   1. Dans le dossier du site :  npx decap-server
+#   2. Servir le site en local (WAMP) puis ouvrir  http://localhost/LCIR/admin/
+#   3. Le bandeau « Working with Local Git Repository » apparaît → éditer,
+#      les modifications sont écrites directement dans publications.json.
+#   4. Relire, puis  git add -A && git commit && git push  pour publier.
+#
+# Le bloc backend ci-dessous ne sert que si l'on édite un jour EN LIGNE
+# (il faudrait alors une app OAuth GitHub ou un proxy) ; en local il est ignoré.
+
+backend:
+  name: github
+  repo: ManMbaiLikol/lcir
+  branch: main
+
+local_backend: true
+
+media_folder: "assets"
+public_folder: "assets"
+
+locale: "fr"
+
+collections:
+  - name: "catalogue"
+    label: "Catalogue"
+    files:
+      - name: "publications"
+        label: "Publications"
+        file: "publications.json"
+        description: "La liste des ouvrages, cahiers et articles affichés sur la page Publications."
+        editor:
+          preview: false
+        fields:
+          - name: "publications"
+            label: "Publications"
+            label_singular: "Publication"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { name: "id", label: "Identifiant (slug)", widget: "string", hint: "Sans espaces ni accents, ex. corridor-atlantique" }
+              - name: "category"
+                label: "Catégorie"
+                widget: "select"
+                options:
+                  - { label: "Livre", value: "livre" }
+                  - { label: "Cahier stratégique", value: "cahier" }
+                  - { label: "Article", value: "article" }
+              - { name: "number", label: "Numéro", widget: "string", required: false, hint: "Ex. 001 — laisser vide si aucun" }
+              - { name: "title", label: "Titre (FR)", widget: "string" }
+              - { name: "title_en", label: "Titre (EN)", widget: "string", required: false }
+              - { name: "author", label: "Auteur", widget: "string", default: "Man Mbaï Likol" }
+              - { name: "year", label: "Année", widget: "string", required: false }
+              - { name: "pages", label: "Nombre de pages", widget: "number", required: false, value_type: "int", min: 0 }
+              - { name: "excerpt", label: "Résumé (FR)", widget: "text" }
+              - { name: "excerpt_en", label: "Résumé (EN)", widget: "text", required: false }
+              - { name: "cover", label: "Couverture", widget: "image", required: false, hint: "Image de couverture (facultatif)" }
+              - { name: "pdf", label: "Fichier PDF", widget: "file", required: false, hint: "PDF téléchargeable (facultatif)" }
+              - { name: "read", label: "Page de lecture", widget: "string", required: false, hint: "Nom du fichier HTML, ex. lecture-corridor-atlantique.html" }
+              - name: "theme"
+                label: "Dossier thématique"
+                widget: "select"
+                required: false
+                options:
+                  - { label: "Raisonnement & prospective", value: "raisonnement" }
+                  - { label: "Souveraineté monétaire", value: "monnaie" }
+                  - { label: "Corridor & industrie", value: "corridor" }
+                  - { label: "Mines & ressources", value: "mines" }
+                  - { label: "Finance & diaspora", value: "finance" }
+              - { name: "published", label: "Publié", widget: "boolean", default: false, hint: "Décocher pour « à paraître »" }
