@@ -332,6 +332,11 @@ class Component extends DCLogic {
       const mod = await import('./publications-data.js');
       if (mod && mod.publications) this.setState({ pubs: mod.publications });
     } catch (e) {}
+    try {
+      const r = await fetch('publications.json');
+      const d = await r.json();
+      if (d && d.publications && d.publications.length) this.setState({ pubs: d.publications });
+    } catch (e) {}
   }
   renderVals() {
     const pubs = this.state.pubs || [];
