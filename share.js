@@ -1,6 +1,12 @@
 // Boutons de partage réseaux sociaux pour les pages de lecture.
 // Utilise l'URL canonique de la page (ou l'URL courante) et son titre.
+// Bilingue : bascule en anglais si <html lang="en">.
 (function () {
+  var EN = (document.documentElement.lang || '').toLowerCase().indexOf('en') === 0;
+  var T = EN
+    ? { label: 'SHARE THIS PUBLICATION', share: 'Share', shareOn: 'Share on ', copy: 'Copy link', copied: 'Link copied!' }
+    : { label: 'PARTAGER CETTE PUBLICATION', share: 'Partager', shareOn: 'Partager sur ', copy: 'Copier le lien', copied: 'Lien copié !' };
+
   function shareUrl() {
     var link = document.querySelector('link[rel="canonical"]');
     return (link && link.href) || location.href;
@@ -43,7 +49,7 @@
 
     // Partage natif (feuille de partage du téléphone) si disponible.
     if (navigator.share) {
-      var nb = el('<button class="share-btn" type="button">' + ICONS.native + 'Partager</button>');
+      var nb = el('<button class="share-btn" type="button">' + ICONS.native + T.share + '</button>');
       nb.addEventListener('click', function () {
         navigator.share({ title: title, url: url }).catch(function () {});
       });
@@ -54,17 +60,17 @@
       var a = el('<a class="share-btn" target="_blank" rel="noopener noreferrer">' +
         ICONS[item.key] + item.label + '</a>');
       a.href = item.href;
-      a.setAttribute('aria-label', 'Partager sur ' + item.label);
+      a.setAttribute('aria-label', T.shareOn + item.label);
       row.appendChild(a);
     });
 
     // Copier le lien.
-    var cb = el('<button class="share-btn" type="button">' + ICONS.link + 'Copier le lien</button>');
+    var cb = el('<button class="share-btn" type="button">' + ICONS.link + T.copy + '</button>');
     cb.addEventListener('click', function () {
       var done = function () {
         var original = cb.innerHTML;
         cb.classList.add('copied');
-        cb.innerHTML = ICONS.link + 'Lien copié !';
+        cb.innerHTML = ICONS.link + T.copied;
         setTimeout(function () { cb.classList.remove('copied'); cb.innerHTML = original; }, 1800);
       };
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -78,7 +84,7 @@
     });
     row.appendChild(cb);
 
-    container.innerHTML = '<div class="share-label">PARTAGER CETTE PUBLICATION</div>';
+    container.innerHTML = '<div class="share-label">' + T.label + '</div>';
     container.appendChild(row);
   }
 

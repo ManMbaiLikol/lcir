@@ -378,7 +378,7 @@ class Component extends DCLogic {
         ...p,
         title: this.t(p),
         cover: this.fix(p.cover),
-        read: this.fix(p.read),
+        read: p.read_en || this.fix(p.read),
         pdf: this.fix(p.pdf),
         subLabel: singular[p.category] + (p.number ? ' No. ' + p.number : '') + (p.year ? ' · ' + p.year + ' EDITION' : ''),
         meta: p.published ? (p.author + (p.pages ? ' — ' + p.pages + ' pages' : '')) : 'Coming soon',
@@ -413,7 +413,7 @@ class Component extends DCLogic {
       latestExcerpt: this.te(latest),
       latestCover: this.fix(latest.cover) || '../assets/apres-cfa-cover.jpg',
       latestPdf: this.fix(latest.pdf) || '',
-      latestRead: this.fix(latest.read) || '',
+      latestRead: latest.read_en || this.fix(latest.read) || '',
       latestBadge: latest.number ? (singular[latest.category] + ' No. ' + latest.number) : (singular[latest.category] || ''),
       groups,
       groupToggles,
@@ -440,7 +440,7 @@ class Component extends DCLogic {
       modalMeta: modal ? (modal.author + (modal.year ? ' · ' + modal.year : '')) : '',
       modalKicker: modal ? (singular[modal.category] || '') : '',
       modalPdf: modal ? this.fix(modal.pdf) : '',
-      modalRead: modal ? this.fix(modal.read) : '',
+      modalRead: modal ? (modal.read_en || this.fix(modal.read)) : '',
       closeModal: () => this.closeModal(),
       stopPropagation: (e) => e.stopPropagation()
     };

@@ -65,6 +65,7 @@
       "cover": "assets/secteur-minier-cover.jpg",
       "pdf": null,
       "read": "lecture-secteur-minier.html",
+      "read_en": "lecture-secteur-minier.html",
       "theme": "mines",
       "published": true
     },

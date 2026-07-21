@@ -1,7 +1,9 @@
 // Bloc « Citer ce cahier / cet article » : référence académique prête à copier.
 // Se monte sur les conteneurs [data-cite]. Lit les métadonnées depuis les
 // attributs data-* du conteneur + l'URL canonique de la page.
+// Bilingue : bascule en anglais si <html lang="en">.
 (function () {
+  var EN = (document.documentElement.lang || '').toLowerCase().indexOf('en') === 0;
   var COPY = '<svg viewBox="0 0 24 24"><path d="M16 1H4a2 2 0 0 0-2 2v13h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/></svg>';
   var CHECK = '<svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>';
 
@@ -14,9 +16,9 @@
     t.innerHTML = html.trim();
     return t.content.firstChild;
   }
-  function todayFr() {
+  function todayStr() {
     try {
-      return new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date());
+      return new Intl.DateTimeFormat(EN ? 'en-GB' : 'fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date());
     } catch (e) { return ''; }
   }
 
@@ -27,17 +29,23 @@
     var year = c.getAttribute('data-year') || '';
     var kind = c.getAttribute('data-kind') || 'cahier';
     var url = canonical();
-    var d = todayFr();
+    var d = todayStr();
+    var labName = EN ? 'Cameroonian Laboratory for the Engineering of Reasoning' : 'Laboratoire Camerounais d’Ingénierie du Raisonnement';
 
     var parts = [];
     if (author) parts.push(author);
-    parts.push('« ' + title + ' »');
+    parts.push(EN ? ('“' + title + '”') : ('« ' + title + ' »'));
     if (ref) parts.push(ref);
-    parts.push('LCIR — Laboratoire Camerounais d’Ingénierie du Raisonnement');
+    parts.push('LCIR — ' + labName);
     if (year) parts.push(year);
-    var citation = parts.join(', ') + '. ' + url + (d ? (' (consulté le ' + d + ')') : '') + '.';
+    var accessed = d ? (EN ? (' (accessed on ' + d + ')') : (' (consulté le ' + d + ')')) : '';
+    var citation = parts.join(', ') + '. ' + url + accessed + '.';
 
-    var heading = kind === 'article' ? 'CITER CET ARTICLE' : 'CITER CE CAHIER';
+    var heading = EN
+      ? (kind === 'article' ? 'CITE THIS ARTICLE' : 'CITE THIS PAPER')
+      : (kind === 'article' ? 'CITER CET ARTICLE' : 'CITER CE CAHIER');
+    var btnLabel = EN ? 'Copy reference' : 'Copier la référence';
+    var okLabel = EN ? 'Reference copied!' : 'Référence copiée !';
 
     c.innerHTML = '';
     c.appendChild(el('<div class="cite-label">' + heading + '</div>'));
@@ -45,12 +53,12 @@
     box.textContent = citation;
     c.appendChild(box);
 
-    var btn = el('<button class="cite-btn" type="button">' + COPY + 'Copier la référence</button>');
+    var btn = el('<button class="cite-btn" type="button">' + COPY + btnLabel + '</button>');
     btn.addEventListener('click', function () {
       var done = function () {
         var original = btn.innerHTML;
         btn.classList.add('copied');
-        btn.innerHTML = CHECK + 'Référence copiée !';
+        btn.innerHTML = CHECK + okLabel;
         setTimeout(function () { btn.classList.remove('copied'); btn.innerHTML = original; }, 1900);
       };
       if (navigator.clipboard && navigator.clipboard.writeText) {
