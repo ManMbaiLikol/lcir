@@ -6,7 +6,7 @@
 <title>LCIR — Laboratoire Camerounais d'Ingénierie du Raisonnement</title>
 <meta name="description" content="Le LCIR développe une culture du raisonnement rigoureux au service du Cameroun, de ses institutions et de ses citoyens. Observer, comprendre, construire.">
 <link rel="canonical" href="https://manmbailikol.github.io/lcir/">
-<link rel="icon" type="image/png" href="assets/logo-lcir.png">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <meta name="theme-color" content="#100e0b">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="LCIR">
@@ -89,7 +89,7 @@ html{scroll-behavior:smooth}
   <!-- NAV -->
   <div class="lc-nav" style="display:flex;align-items:center;gap:28px;padding:18px 44px;border-bottom:1px solid rgba(var(--border-rgb),.1);background:var(--bg);position:sticky;top:0;z-index:100">
     <div style="display:flex;align-items:center;gap:14px">
-      <img src="assets/logo-lcir.png" alt="LCIR" style="height:46px;width:auto">
+      <img src="assets/logo-lcir.png" alt="LCIR" width="600" height="240" style="height:46px;width:auto">
     </div>
     <div class="lc-nav-pills" style="margin-left:20px;display:flex;gap:6px;align-items:center;border:1px solid rgba(var(--border-rgb),.14);border-radius:999px;padding:8px 6px">
       <a href="#mission" style="padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em;color:rgb(var(--ink-rgb));transition:background .2s,color .2s" style-hover="background:var(--dark-surface);color:var(--on-dark)">MISSION</a>
@@ -388,7 +388,7 @@ class Component extends DCLogic {
     return {
       latestTitle: latest.title || '',
       latestExcerpt: latest.excerpt || '',
-      latestCover: latest.cover || 'assets/apres-cfa-cover.jpg',
+      latestCover: latest.cover || 'assets/apres-cfa-cover.webp',
       latestPdf: latest.pdf || '',
       latestRead: latest.read || '',
       latestBadge: latest.number ? (categoryLabels[latest.category] || '') + ' N°' + latest.number : (categoryLabels[latest.category] || ''),
