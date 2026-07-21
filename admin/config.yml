@@ -48,13 +48,11 @@ collections:
                   - { label: "Cahier stratégique", value: "cahier" }
                   - { label: "Article", value: "article" }
               - { name: "number", label: "Numéro", widget: "string", required: false, hint: "Ex. 001 — laisser vide si aucun" }
-              - { name: "title", label: "Titre (FR)", widget: "string" }
-              - { name: "title_en", label: "Titre (EN)", widget: "string", required: false }
+              - { name: "title", label: "Titre", widget: "string" }
               - { name: "author", label: "Auteur", widget: "string", default: "Man Mbaï Likol" }
               - { name: "year", label: "Année", widget: "string", required: false }
               - { name: "pages", label: "Nombre de pages", widget: "number", required: false, value_type: "int", min: 0 }
-              - { name: "excerpt", label: "Résumé (FR)", widget: "text" }
-              - { name: "excerpt_en", label: "Résumé (EN)", widget: "text", required: false }
+              - { name: "excerpt", label: "Résumé", widget: "text" }
               - { name: "cover", label: "Couverture", widget: "image", required: false, hint: "Image de couverture (facultatif)" }
               - { name: "pdf", label: "Fichier PDF", widget: "file", required: false, hint: "PDF téléchargeable (facultatif)" }
               - { name: "read", label: "Page de lecture", widget: "string", required: false, hint: "Nom du fichier HTML, ex. lecture-corridor-atlantique.html" }

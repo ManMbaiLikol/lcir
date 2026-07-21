@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>(function(){try{var t=localStorage.getItem('lcir-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <title>Le Corridor Atlantique Camerounais — Cahier stratégique N°002 — LCIR</title>
 <meta name="description" content="Idenau–Limbé–Douala–Édéa–Kribi : anatomie, données et perspectives d'une mégalopole industrielle en construction en Afrique centrale. Une lecture systémique de la souveraineté économique camerounaise.">
 <link rel="canonical" href="https://manmbailikol.github.io/lcir/lecture-corridor-atlantique.html">
@@ -51,9 +50,9 @@
       <a href="publications.html" class="active">PUBLICATIONS</a>
       <a href="equipe.html">ÉQUIPE</a>
       <a href="index.html#ressources">RESSOURCES</a>
+      <a href="donnees.html">DONNÉES</a>
     </div>
     <a class="nav-contact" href="contact.html">CONTACT <span>→</span></a>
-    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Basculer le thème clair/sombre"></button>
   </div>
 
   <article class="wrap">
@@ -446,6 +445,7 @@
     </div>
 
     <div id="next-pub" style="margin-top:40px"></div>
+    <div data-newsletter="dark" style="margin-top:44px;padding:36px 32px;background:#171410;border-radius:10px"></div>
 
     <div class="backrow">
       <a class="back" href="publications.html"><span>←</span> Toutes les publications</a>
@@ -463,16 +463,17 @@
       <a href="a-propos.html">MISSION</a>
       <a href="publications.html">PUBLICATIONS</a>
       <a href="index.html#ressources">RESSOURCES</a>
+      <a href="donnees.html">DONNÉES</a>
     </nav>
   </div>
   <div class="copyright">© 2026 LCIR · Observer. Comprendre. Construire.</div>
 
   <script src="share.js"></script>
   <script src="follow.js"></script>
+  <script src="newsletter.js"></script>
   <script src="cite.js"></script>
   <script src="lecture-ux.js"></script>
   <script src="analytics.js"></script>
-  <script src="theme.js"></script>
   <script type="module">
     import { mountNextCard } from './article-nav.js';
     mountNextCard('corridor-atlantique', '#next-pub');

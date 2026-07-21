@@ -1,0 +1,19 @@
+/* Palette partagée des pages principales LCIR (mêmes valeurs que lecture.css).
+   Les styles inline des pages référencent ces variables. */
+
+:root{
+  --bg:#f8f2e3;
+  --ink-fixed:#171410;       /* texte toujours sombre (sur surfaces or/crème) */
+  --ink-rgb:23,20,16;        /* texte principal (composantes RVB pour variantes alpha) */
+  --border-rgb:0,0,0;
+  --dark-surface:#171410;    /* surfaces sombres : cartes, boutons, badges */
+  --dark-surface-hover:#2a241a;
+  --on-dark:#f8f2e3;         /* texte sur surface sombre */
+  --footer-bg:#100e0b;
+  --footer-rgb:16,14,11;
+  --gold:#c9932e;
+  --gold-deep:#8a6614;
+  --gold-bright:#e7bb52;
+  --link:#8a6614;
+  --link-hover:#a3781f;
+}
