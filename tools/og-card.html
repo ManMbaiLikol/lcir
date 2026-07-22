@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Générateur de carte de partage LCIR</title>
+<!--
+  Gabarit des images de partage (og:image) — format 1200x630.
+
+  Utilisation : ouvrir cette page avec des paramètres d'URL, puis capturer
+  la fenêtre en 1200x630. Le script tools/make-og.sh automatise l'opération
+  pour toutes les publications du catalogue.
+
+  Paramètres :
+    kicker  — surtitre (ex. « CAHIER STRATÉGIQUE N°002 »)
+    title   — titre de la publication
+    cover   — chemin de la couverture, relatif à la racine du site
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:1200px;height:630px;overflow:hidden;font-family:'Inter',system-ui,sans-serif;background:#f8f2e3}
+  .card{width:1200px;height:630px;display:grid;grid-template-columns:1fr 430px;position:relative}
+  /* Filet tricolore camerounais, comme sur l'accueil */
+  .flag{position:absolute;top:0;left:0;right:0;height:7px;display:flex;z-index:2}
+  .flag i{flex:1}
+  .flag i:nth-child(1){background:#0a7a3d}
+  .flag i:nth-child(2){background:#c8102e}
+  .flag i:nth-child(3){background:#c9932e}
+  .left{padding:62px 44px 48px 64px;display:flex;flex-direction:column;justify-content:space-between}
+  .kicker{font-size:17px;font-weight:800;letter-spacing:.13em;color:#8a6614;display:flex;align-items:center;gap:11px}
+  .kicker .dot{width:9px;height:9px;border-radius:50%;background:#c9932e;flex:none}
+  h1{font-size:53px;line-height:1.09;font-weight:800;color:#171410;letter-spacing:-.015em;margin-top:26px;
+     display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+  h1.long{font-size:43px;-webkit-line-clamp:6}
+  .foot{display:flex;align-items:center;gap:16px}
+  .foot img{height:52px;width:auto;display:block}
+  .foot .sep{width:1px;height:34px;background:rgba(23,20,16,.2)}
+  .author{font-size:16px;line-height:1.35;color:rgba(23,20,16,.66)}
+  .author b{display:block;color:#171410;font-weight:800;font-size:17px}
+  /* La couverture est présentée comme un objet posé sur un panneau sombre,
+     et non en fond pleine hauteur : cadrée entière, elle répéterait le titre
+     déjà affiché à gauche de la carte. */
+  .right{position:relative;background:#171410;display:flex;align-items:center;justify-content:center}
+  .right img{max-width:262px;max-height:472px;width:auto;height:auto;display:block;border-radius:5px;
+             box-shadow:0 20px 44px rgba(0,0,0,.55)}
+  .right.empty{background:linear-gradient(150deg,#171410,#2a241a)}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="flag"><i></i><i></i><i></i></div>
+  <div class="left">
+    <div>
+      <div class="kicker"><span class="dot"></span><span id="kicker"></span></div>
+      <h1 id="title"></h1>
+    </div>
+    <div class="foot">
+      <img src="../assets/logo-lcir.png" alt="LCIR">
+      <div class="sep"></div>
+      <div class="author"><b>Man Mbaï Likol</b>Laboratoire Camerounais d'Ingénierie du Raisonnement</div>
+    </div>
+  </div>
+  <div class="right"><img id="cover" alt=""></div>
+</div>
+<script>
+  var q = new URLSearchParams(location.search);
+  var title = q.get('title') || '';
+  document.getElementById('kicker').textContent = q.get('kicker') || 'LCIR';
+  var h1 = document.getElementById('title');
+  h1.textContent = title;
+  // Les titres longs passent dans un corps plus petit pour rester entiers.
+  if (title.length > 62) h1.classList.add('long');
+  var cover = q.get('cover');
+  var img = document.getElementById('cover');
+  if (cover) { img.src = '../' + cover; } else { img.remove(); img.parentNode && document.querySelector('.right').classList.add('empty'); }
+</script>
+</body>
+</html>
