@@ -1,6 +1,21 @@
 {
   "publications": [
     {
+      "id": "ai-act-europe",
+      "category": "article",
+      "number": null,
+      "title": "L'Europe entre dans l'ère de la régulation de l'intelligence artificielle. Et le Cameroun devrait s'y intéresser.",
+      "author": "Man Mbaï Likol",
+      "year": "2026",
+      "pages": null,
+      "excerpt": "Depuis le 2 août 2026, l'Union européenne applique l'essentiel de son AI Act. Quatre niveaux de risque, de nouvelles obligations de transparence — et une question stratégique pour le Cameroun : pourquoi attendre que l'Europe définisse les règles des technologies que nous utilisons ?",
+      "cover": "assets/ai-act-europe-cover.webp",
+      "pdf": null,
+      "read": "lecture-ai-act-europe.html",
+      "theme": "numerique",
+      "published": true
+    },
+    {
       "id": "corridor-atlantique",
       "category": "cahier",
       "number": "002",

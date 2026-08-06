@@ -66,4 +66,5 @@ collections:
                   - { label: "Corridor & industrie", value: "corridor" }
                   - { label: "Mines & ressources", value: "mines" }
                   - { label: "Finance & diaspora", value: "finance" }
+                  - { label: "Numérique & souveraineté technologique", value: "numerique" }
               - { name: "published", label: "Publié", widget: "boolean", default: false, hint: "Décocher pour « à paraître »" }

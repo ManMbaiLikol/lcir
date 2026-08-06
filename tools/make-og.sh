@@ -28,6 +28,7 @@ CARDS=(
   "corridor-atlantique|CAHIER STRATÉGIQUE N°002|Corridor Atlantique Camerounais (Limbé-Douala-Edéa-Kribi)|assets/corridor-atlantique-cover.webp"
   "secteur-minier|ARTICLE|Secteur minier : le Cameroun veut reprendre le contrôle de son sous-sol|assets/secteur-minier-cover.webp"
   "afd-diaspora|ARTICLE|Pourquoi l'AFD est-elle associée au projet de mobilisation de 2 000 milliards FCFA auprès de la diaspora ?|assets/afd-diaspora-cover.webp"
+  "ai-act-europe|ARTICLE|L'Europe entre dans l'ère de la régulation de l'intelligence artificielle. Et le Cameroun devrait s'y intéresser.|assets/ai-act-europe-cover.webp"
 )
 
 # Encodage des paramètres d'URL.

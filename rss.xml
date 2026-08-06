@@ -8,12 +8,21 @@
     <language>fr</language>
     <copyright>© 2026 LCIR — Laboratoire Camerounais d'Ingénierie du Raisonnement</copyright>
     <managingEditor>kamerdesignstyle@gmail.com (Man Mbaï Likol)</managingEditor>
-    <lastBuildDate>Mon, 20 Jul 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 06 Aug 2026 12:00:00 +0000</lastBuildDate>
     <image>
       <url>https://manmbailikol.github.io/lcir/assets/logo-lcir.png</url>
       <title>LCIR — Publications</title>
       <link>https://manmbailikol.github.io/lcir/publications.html</link>
     </image>
+
+    <item>
+      <title>L'Europe entre dans l'ère de la régulation de l'intelligence artificielle. Et le Cameroun devrait s'y intéresser.</title>
+      <link>https://manmbailikol.github.io/lcir/lecture-ai-act-europe.html</link>
+      <guid isPermaLink="true">https://manmbailikol.github.io/lcir/lecture-ai-act-europe.html</guid>
+      <dc:creator>Man Mbaï Likol</dc:creator>
+      <category>Article</category>
+      <description>Depuis le 2 août 2026, l'Union européenne applique l'essentiel de son AI Act. Quatre niveaux de risque, de nouvelles obligations de transparence — et une question stratégique pour le Cameroun : pourquoi attendre que l'Europe définisse les règles des technologies que nous utilisons ?</description>
+    </item>
 
     <item>
       <title>Corridor Atlantique Camerounais (Limbé-Douala-Edéa-Kribi)</title>
