@@ -67,4 +67,5 @@ collections:
                   - { label: "Mines & ressources", value: "mines" }
                   - { label: "Finance & diaspora", value: "finance" }
                   - { label: "Numérique & souveraineté technologique", value: "numerique" }
+                  - { label: "Géoéconomie & puissances", value: "geoeconomie" }
               - { name: "published", label: "Publié", widget: "boolean", default: false, hint: "Décocher pour « à paraître »" }

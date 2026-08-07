@@ -13,7 +13,8 @@
 //   - `published: false` la marque « à paraître ».
 //
 // Champ `theme` : dossier thématique, parmi les clés de `categoryMeta`/`themeMeta`
-// ('raisonnement', 'monnaie', 'corridor', 'mines', 'finance', 'numerique').
+// ('raisonnement', 'monnaie', 'corridor', 'mines', 'finance', 'numerique',
+// 'geoeconomie').
 
 let publications = [];
 

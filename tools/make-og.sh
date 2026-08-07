@@ -29,6 +29,7 @@ CARDS=(
   "secteur-minier|ARTICLE|Secteur minier : le Cameroun veut reprendre le contrôle de son sous-sol|assets/secteur-minier-cover.webp"
   "afd-diaspora|ARTICLE|Pourquoi l'AFD est-elle associée au projet de mobilisation de 2 000 milliards FCFA auprès de la diaspora ?|assets/afd-diaspora-cover.webp"
   "ai-act-europe|ARTICLE|L'Europe entre dans l'ère de la régulation de l'intelligence artificielle. Et le Cameroun devrait s'y intéresser.|assets/ai-act-europe-cover.webp"
+  "fifa-uefa|ARTICLE · GÉOÉCONOMIE|FIFA–UEFA : la guerre pour la rente mondiale du football|assets/fifa-uefa-cover.webp"
 )
 
 # Encodage des paramètres d'URL.

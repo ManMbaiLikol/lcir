@@ -8,12 +8,21 @@
     <language>fr</language>
     <copyright>© 2026 LCIR — Laboratoire Camerounais d'Ingénierie du Raisonnement</copyright>
     <managingEditor>kamerdesignstyle@gmail.com (Man Mbaï Likol)</managingEditor>
-    <lastBuildDate>Thu, 06 Aug 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 07 Aug 2026 12:00:00 +0000</lastBuildDate>
     <image>
       <url>https://manmbailikol.github.io/lcir/assets/logo-lcir.png</url>
       <title>LCIR — Publications</title>
       <link>https://manmbailikol.github.io/lcir/publications.html</link>
     </image>
+
+    <item>
+      <title>FIFA–UEFA : la guerre pour la rente mondiale du football</title>
+      <link>https://manmbailikol.github.io/lcir/lecture-fifa-uefa.html</link>
+      <guid isPermaLink="true">https://manmbailikol.github.io/lcir/lecture-fifa-uefa.html</guid>
+      <dc:creator>Man Mbaï Likol</dc:creator>
+      <category>Article</category>
+      <description>UEFA, UC3, Relevent Sports, FIFA, plateformes mondiales et intérêts africains : derrière le conflit moral, deux architectures concurrentes de mondialisation du football, et ce que l'Afrique peut en négocier.</description>
+    </item>
 
     <item>
       <title>L'Europe entre dans l'ère de la régulation de l'intelligence artificielle. Et le Cameroun devrait s'y intéresser.</title>

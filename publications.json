@@ -1,6 +1,21 @@
 {
   "publications": [
     {
+      "id": "fifa-uefa",
+      "category": "article",
+      "number": null,
+      "title": "FIFA–UEFA : la guerre pour la rente mondiale du football",
+      "author": "Man Mbaï Likol",
+      "year": "2026",
+      "pages": null,
+      "excerpt": "UEFA, UC3, Relevent Sports, FIFA, plateformes mondiales et intérêts africains : derrière le conflit moral, deux architectures concurrentes de mondialisation du football, et ce que l'Afrique peut en négocier.",
+      "cover": "assets/fifa-uefa-cover.webp",
+      "pdf": null,
+      "read": "lecture-fifa-uefa.html",
+      "theme": "geoeconomie",
+      "published": true
+    },
+    {
       "id": "ai-act-europe",
       "category": "article",
       "number": null,
