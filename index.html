@@ -76,7 +76,7 @@ html{scroll-behavior:smooth}
 @media (max-width: 900px) {
   .lc-nav{flex-wrap:wrap!important;gap:14px!important;padding:16px 20px!important}
   .lc-nav-sub{display:none!important}
-  .lc-nav-pills{order:3;width:100%!important;justify-content:center!important}
+  .lc-nav-pills{order:3;width:100%!important;justify-content:center!important;flex-wrap:wrap!important}
   .lc-section{padding:40px 20px!important}
   .lc-hero-grid{grid-template-columns:1fr!important;gap:32px!important}
   .lc-hero-card{min-height:320px!important}
@@ -95,7 +95,11 @@ html{scroll-behavior:smooth}
   .lc-h2{font-size:28px!important}
   .lc-closing{padding:40px 20px!important;text-align:center;justify-content:center!important}
   .lc-closing-title{font-size:32px!important}
-  .lc-footer{flex-direction:column;align-items:flex-start!important;gap:14px!important}
+  /* Pied de page : sans retour à la ligne ni réduction des marges latérales,
+     la rangée de liens (~370 px) débordait la page sous 420 px de large. */
+  .lc-footer{flex-direction:column;align-items:flex-start!important;gap:14px!important;padding:28px 20px!important}
+  .lc-footer > div{flex-wrap:wrap!important}
+  .lc-copyright{padding-left:20px!important;padding-right:20px!important}
 }
 </style>
 </helmet>
@@ -381,7 +385,7 @@ html{scroll-behavior:smooth}
       <a href="contact.html" style="color:var(--on-dark);transition:color .2s" style-hover="color:var(--gold)">CONTACT</a>
     </div>
   </div>
-  <div style="background:var(--footer-bg);color:rgba(247,242,230,.5);padding:0 44px 28px;font-size:12px">© 2026 LCIR · Observer. Comprendre. Construire.</div>
+  <div class="lc-copyright" style="background:var(--footer-bg);color:rgba(247,242,230,.5);padding:0 44px 28px;font-size:12px">© 2026 LCIR · Observer. Comprendre. Construire.</div>
 
 </div>
 

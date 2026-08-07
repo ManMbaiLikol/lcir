@@ -163,7 +163,9 @@ blockquote cite{display:block;font-style:normal;font-family:'Inter',sans-serif;f
 /* Citer ce cahier / cet article : référence prête à copier */
 .cite{margin-top:36px;padding:22px 24px;border:1px solid rgba(var(--border-rgb),.14);border-left:3px solid var(--gold);border-radius:8px;background:rgba(201,147,46,.05)}
 .cite-label{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--gold-deep);margin-bottom:12px}
-.cite-text{font-family:'Newsreader',Georgia,serif;font-size:15.5px;line-height:1.65;color:rgb(var(--ink-rgb));margin-bottom:16px}
+/* La référence contient l'URL complète de la page : sans coupure autorisée,
+   ce mot insécable débordait la page sur les écrans étroits. */
+.cite-text{font-family:'Newsreader',Georgia,serif;font-size:15.5px;line-height:1.65;color:rgb(var(--ink-rgb));margin-bottom:16px;overflow-wrap:anywhere}
 .cite-btn{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.03em;color:rgb(var(--ink-rgb));background:transparent;border:1px solid rgba(var(--border-rgb),.2);border-radius:999px;padding:10px 16px;cursor:pointer;transition:background .2s,color .2s,border-color .2s;font-family:inherit}
 .cite-btn svg{width:15px;height:15px;fill:currentColor}
 .cite-btn:hover{background:var(--dark-surface);color:var(--on-dark);border-color:var(--dark-surface)}
@@ -206,5 +208,9 @@ blockquote cite{display:block;font-style:normal;font-family:'Inter',sans-serif;f
   .body h2{font-size:23px}
   .lede{font-size:20px}
   .pullquote{font-size:21px;padding:30px 22px}
-  .footer{flex-direction:column;align-items:flex-start}
+  /* Pied de page : sans retour à la ligne ni réduction des marges latérales,
+     la rangée de liens (~370 px) débordait la page sous 420 px de large. */
+  .footer{flex-direction:column;align-items:flex-start;padding:28px 20px}
+  .footer nav{flex-wrap:wrap;gap:12px 20px}
+  .copyright{padding:0 20px 24px}
 }

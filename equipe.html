@@ -94,7 +94,11 @@ html{scroll-behavior:smooth}
   .lc-team-grid{grid-template-columns:1fr!important}
   .lc-closing{padding:40px 20px!important;text-align:center;justify-content:center!important}
   .lc-closing-title{font-size:32px!important}
-  .lc-footer{flex-direction:column;align-items:flex-start!important;gap:14px!important}
+  /* Pied de page : sans retour à la ligne ni réduction des marges latérales,
+     la rangée de liens (~370 px) débordait la page sous 420 px de large. */
+  .lc-footer{flex-direction:column;align-items:flex-start!important;gap:14px!important;padding:28px 20px!important}
+  .lc-footer > div{flex-wrap:wrap!important}
+  .lc-copyright{padding-left:20px!important;padding-right:20px!important}
 }
 </style>
 </helmet>
@@ -168,7 +172,7 @@ html{scroll-behavior:smooth}
       <a href="donnees.html" style="color:#f8f2e3;transition:color .2s" style-hover="color:#c9932e">DONNÉES</a>
     </div>
   </div>
-  <div style="background:#100e0b;color:rgba(247,242,230,.5);padding:0 44px 28px;font-size:12px">© 2026 LCIR · Observer. Comprendre. Construire.</div>
+  <div class="lc-copyright" style="background:#100e0b;color:rgba(247,242,230,.5);padding:0 44px 28px;font-size:12px">© 2026 LCIR · Observer. Comprendre. Construire.</div>
 
 </div>
 
