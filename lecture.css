@@ -40,7 +40,17 @@ h1{font-size:42px;line-height:1.13;font-weight:800;margin:0 0 18px;letter-spacin
 .subtitle{font-size:17px;color:rgba(var(--ink-rgb),.62);line-height:1.55;margin:0 0 18px;max-width:40em}
 .byline{display:flex;align-items:center;gap:14px;font-size:14px;color:rgba(var(--ink-rgb),.6);margin-bottom:8px;flex-wrap:wrap}
 .byline strong{color:rgb(var(--ink-rgb));font-weight:700}
-.cover{width:100%;border-radius:6px;margin:30px 0 8px;background:var(--dark-surface);display:block}
+/* Couverture. Les couvertures sont au format portrait : en pleine largeur de
+   colonne (772 px) elles dépassaient 1 150 px de haut, soit plus d'un écran et
+   plus d'une page imprimée. On les borne en hauteur et on les centre : le
+   rapport d'image est conservé, la couverture se lit d'un seul coup d'œil et
+   tient sur une page. */
+.cover{display:block;max-width:100%;max-height:70vh;width:auto;height:auto;
+       margin:30px auto 8px;border-radius:6px;background:var(--dark-surface)}
+@supports (max-height:min(70vh,760px)){
+  /* Sur un très grand écran, 70vh reste démesuré pour une couverture. */
+  .cover{max-height:min(70vh,760px)}
+}
 .lede{font-family:'Newsreader',Georgia,serif;font-size:22px;line-height:1.5;color:rgba(var(--ink-rgb),.9);border-left:3px solid var(--gold);padding:6px 0 6px 22px;margin:34px 0}
 
 .body{font-size:18px;line-height:1.72}
@@ -213,4 +223,42 @@ blockquote cite{display:block;font-style:normal;font-family:'Inter',sans-serif;f
   .footer{flex-direction:column;align-items:flex-start;padding:28px 20px}
   .footer nav{flex-wrap:wrap;gap:12px 20px}
   .copyright{padding:0 20px 24px}
+}
+
+/* ==========================================================================
+   IMPRESSION ET EXPORT PDF
+   Les pages de lecture n'avaient aucun style d'impression : la couverture
+   débordait sur une deuxième page et toute l'interface (navigation collante,
+   partage, formulaire d'inscription) se retrouvait sur le papier.
+   ========================================================================== */
+@media print{
+  @page{margin:16mm 14mm}
+
+  /* Ne sert à rien sur papier : navigation, partage, abonnement, renvois. */
+  .nav,.footer,.copyright,.reading-progress,
+  .share,.follow,.backrow,#next-pub,[data-newsletter]{display:none !important}
+
+  body{background:#fff}
+  .wrap{max-width:none;padding:0}
+  .body{font-size:11.5pt;line-height:1.55}
+
+  /* Le cœur du problème : bornée en centimètres, la couverture occupe une
+     fraction de page connue quel que soit le format papier. */
+  .cover{max-height:10.5cm;width:auto;margin:0 auto 1.2em}
+
+  /* Rien d'indivisible ne doit être coupé par un saut de page. */
+  img,.stat,.stats,.note,.pullquote,.chart,.colchart,.barchart,
+  .table-scroll,tr{page-break-inside:avoid;break-inside:avoid}
+  h1,h2,h3{page-break-after:avoid;break-after:avoid}
+  /* Un sommaire coupé en deux est illisible : s'il ne tient pas dans la
+     place restante, il bascule entier sur la page suivante. */
+  .toc{page-break-inside:avoid;break-inside:avoid}
+
+  /* Un tableau ne doit pas être rogné faute de défilement possible. */
+  .table-scroll{overflow:visible}
+  table{min-width:0}
+  thead{display:table-header-group}
+
+  /* Une adresse cliquable ne se suit pas sur papier : on l'imprime. */
+  .sources a::after{content:" — " attr(href);font-size:8.5pt;word-break:break-all;color:#555}
 }
