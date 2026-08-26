@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Générateur de couverture LCIR</title>
+<!--
+  Gabarit des couvertures de publications — format portrait 1060x1590.
+
+  Les couvertures « photographiques » du site sont produites hors chaîne.
+  Ce gabarit sert aux publications sans visuel dédié : il compose une
+  couverture typographique dans la charte du site, dont la partie basse
+  est un schéma de chiffres tiré du document lui-même.
+
+  Utilisation : ouvrir cette page avec des paramètres d'URL, puis capturer
+  la fenêtre en 1060x1590. Le script tools/make-covers.sh automatise
+  l'opération pour toutes les publications concernées.
+
+  Paramètres :
+    kicker  — surtitre (ex. « ARTICLE · MINES & RESSOURCES »)
+    title   — titre de la publication
+    points  — trois arguments courts séparés par « ; », qui occupent le
+              milieu de la couverture. Facultatif.
+    figure  — identifiant du schéma de bas de page, parmi les blocs
+              définis dans FIGURES ci-dessous. Valeur inconnue ou absente :
+              la couverture se compose sans schéma.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:1060px;height:1590px;overflow:hidden;font-family:'Inter',system-ui,sans-serif;
+       background:#100e0b;color:#f8f2e3}
+  .cover{width:1060px;height:1590px;position:relative;display:flex;flex-direction:column;
+         padding:0 74px 66px;
+         background:radial-gradient(120% 80% at 50% 0%,#241d13 0%,#100e0b 62%)}
+  /* Filet tricolore camerounais, comme sur l'accueil et les cartes de partage */
+  .flag{position:absolute;top:0;left:0;right:0;height:9px;display:flex}
+  .flag i{flex:1}
+  .flag i:nth-child(1){background:#0a7a3d}
+  .flag i:nth-child(2){background:#c8102e}
+  .flag i:nth-child(3){background:#c9932e}
+
+  /* Le titre est délibérément secondaire. Partout où une couverture est
+     affichée — carte héros de l'accueil, dernière parution, vignette de
+     liste, carte de partage — le titre est déjà écrit juste à côté par le
+     site. Une couverture typographique qui le répète en très gros donne
+     une impression de doublon ; ici c'est le schéma de chiffres qui porte
+     la couverture, et le titre sert d'identification. */
+  .head{padding-top:56px;margin-top:auto}
+  .kicker{font-size:18px;font-weight:800;letter-spacing:.15em;color:#e7bb52;
+          display:flex;align-items:center;gap:13px}
+  .kicker .dot{width:10px;height:10px;border-radius:50%;background:#c9932e;flex:none}
+  h1{font-size:50px;line-height:1.12;font-weight:800;letter-spacing:-.02em;margin-top:26px;
+     color:rgba(248,242,227,.94);max-width:840px;text-wrap:balance}
+  h1.long{font-size:44px}
+  h1.xlong{font-size:38px;line-height:1.18}
+  .rule{width:88px;height:4px;background:#c9932e;margin:32px 0 0}
+
+  /* Points-clés — milieu de la couverture */
+  .points{margin-top:auto;padding-top:48px;counter-reset:pt}
+  .points li{counter-increment:pt;list-style:none;position:relative;
+             padding:19px 0 19px 62px;font-size:24px;line-height:1.35;font-weight:600;
+             color:rgba(248,242,227,.88);border-top:1px solid rgba(248,242,227,.12)}
+  .points li:last-child{border-bottom:1px solid rgba(248,242,227,.12)}
+  .points li::before{content:counter(pt,decimal-leading-zero);position:absolute;left:0;top:23px;
+                     font-size:16px;font-weight:800;color:#c9932e;font-variant-numeric:tabular-nums}
+
+  /* Schéma de chiffres — occupe le bas de la couverture */
+  .fig{padding-top:58px}
+  .fig-cap{font-size:16px;font-weight:800;letter-spacing:.11em;color:#8a6614;margin-bottom:26px}
+  .fig-note{font-size:16px;line-height:1.5;color:rgba(248,242,227,.45);margin-top:26px}
+
+  /* Variante « bascule » : une valeur de référence, une valeur simulée, puis des écarts */
+  .swing{display:flex;align-items:baseline;gap:22px;flex-wrap:wrap}
+  .swing .from{font-size:62px;font-weight:800;color:rgba(248,242,227,.42);
+               text-decoration:line-through;text-decoration-thickness:3px}
+  .swing .arrow{font-size:52px;color:#c9932e;line-height:1}
+  .swing .to{font-size:96px;font-weight:900;color:#e7bb52;letter-spacing:-.02em}
+  .swing .unit{font-size:28px;font-weight:700;color:rgba(248,242,227,.6)}
+  .rows{margin-top:34px;border-top:1px solid rgba(248,242,227,.14)}
+  .rows .r{display:grid;grid-template-columns:1fr auto auto auto;align-items:center;gap:20px;
+           padding:19px 0;border-bottom:1px solid rgba(248,242,227,.14);font-size:24px}
+  .rows .r .k{color:rgba(248,242,227,.72);font-weight:600}
+  .rows .r .a{color:rgba(248,242,227,.45);font-weight:700;font-variant-numeric:tabular-nums}
+  .rows .r .s{color:#c9932e;font-weight:700}
+  .rows .r .b{color:#f8f2e3;font-weight:800;font-variant-numeric:tabular-nums;min-width:118px;text-align:right}
+
+  /* Variante « échelle de valeur » : barres croissantes.
+     La valeur est placée à côté de la barre, et non dedans : sinon la barre
+     la plus courte devrait être élargie pour contenir son libellé, et
+     l'échelle affichée cesserait d'être l'échelle réelle. */
+  .ladder{display:flex;flex-direction:column;gap:20px}
+  .ladder .step{display:grid;grid-template-columns:200px 1fr 210px;align-items:center;gap:20px}
+  .ladder .lab{font-size:26px;font-weight:800;color:#f8f2e3;line-height:1.2}
+  .ladder .lab small{display:block;font-size:15px;font-weight:600;letter-spacing:.05em;
+                     color:rgba(248,242,227,.42);margin-top:5px}
+  .ladder .bar{height:66px;border-radius:5px;min-width:7px}
+  .ladder .val{font-size:25px;font-weight:800;color:#f8f2e3;white-space:nowrap}
+
+  .foot{display:flex;align-items:center;gap:20px;margin-top:52px;
+        padding-top:34px;border-top:1px solid rgba(248,242,227,.16)}
+  .foot img{height:56px;width:auto;display:block}
+  .foot .sep{width:1px;height:40px;background:rgba(248,242,227,.22)}
+  .foot .who{font-size:18px;line-height:1.4;color:rgba(248,242,227,.6)}
+  .foot .who b{display:block;color:#f8f2e3;font-weight:800;font-size:20px}
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="flag"><i></i><i></i><i></i></div>
+
+  <div class="head">
+    <div class="kicker"><span class="dot"></span><span id="kicker"></span></div>
+    <h1 id="title"></h1>
+    <div class="rule"></div>
+  </div>
+
+  <ol class="points" id="points"></ol>
+
+  <div class="fig" id="fig"></div>
+
+  <div class="foot">
+    <img src="../assets/logo-lcir.png" alt="LCIR">
+    <div class="sep"></div>
+    <div class="who"><b>Man Mbaï Likol</b>Laboratoire Camerounais d'Ingénierie du Raisonnement</div>
+  </div>
+</div>
+
+<script>
+  // Schémas de bas de couverture. Chaque entrée est propre à une publication :
+  // les chiffres viennent du document publié, pas d'un jeu générique.
+  var FIGURES = {
+
+    // Rapport de conjoncture 2025 — l'effet de niveau du scénario central
+    // et son report mécanique sur les grands ratios.
+    'conjoncture': ''
+      + '<div class="fig-cap">SCÉNARIO CENTRAL — PIB NOMINAL 2025 SIMULÉ</div>'
+      + '<div class="swing">'
+      +   '<span class="from">34 445</span>'
+      +   '<span class="arrow">→</span>'
+      +   '<span class="to">37 373</span>'
+      +   '<span class="unit">Mds FCFA · +8,5 % de niveau statistique</span>'
+      + '</div>'
+      + '<div class="rows">'
+      +   '<div class="r"><span class="k">Dette publique / PIB</span><span class="a">40,3 %</span><span class="s">→</span><span class="b">37,1 %</span></div>'
+      +   '<div class="r"><span class="k">Déficit budgétaire / PIB</span><span class="a">2,0 %</span><span class="s">→</span><span class="b">1,84 %</span></div>'
+      +   '<div class="r"><span class="k">Déficit courant / PIB</span><span class="a">3,9 %</span><span class="s">→</span><span class="b">3,59 %</span></div>'
+      + '</div>'
+      + '<div class="fig-note">Stocks et soldes nominaux inchangés. Rapport de simulation — ni publication de l’INS, ni estimation officielle.</div>',
+
+    // Enquête Minim-Martap — l'échelle de valeur qui explique la bataille de contrôle.
+    'minim-martap': ''
+      + '<div class="fig-cap">CE QUE VAUT UNE TONNE, SELON L’ENDROIT OÙ ELLE EST TRANSFORMÉE</div>'
+      // Largeurs à l'échelle du point médian de chaque fourchette,
+      // rapporté à 2 650 USD : 52,5 → 2 %, 450 → 17 %, 2 650 → 100 %.
+      + '<div class="ladder">'
+      +   '<div class="step"><div class="lab">Bauxite<small>EXTRAITE</small></div>'
+      +     '<div class="bar" style="width:2%;background:#6f665a"></div>'
+      +     '<div class="val">35–70 $</div></div>'
+      +   '<div class="step"><div class="lab">Alumine<small>RAFFINÉE</small></div>'
+      +     '<div class="bar" style="width:17%;background:#c9932e"></div>'
+      +     '<div class="val">400–500 $</div></div>'
+      +   '<div class="step"><div class="lab">Aluminium<small>ÉLECTROLYSÉ</small></div>'
+      +     '<div class="bar" style="width:100%;background:#e7bb52"></div>'
+      +     '<div class="val">2 500–2 800 $</div></div>'
+      + '</div>'
+      + '<div class="fig-note">Ordres de grandeur AFC 2026. ALUCAM produit de l’aluminium à Édéa depuis 1957 — et importe son alumine.</div>'
+  };
+
+  var q = new URLSearchParams(location.search);
+  var title = q.get('title') || '';
+  document.getElementById('kicker').textContent = q.get('kicker') || 'LCIR';
+
+  // Typographie française : la ponctuation double ne doit jamais ouvrir une
+  // ligne. L'espace insécable est posé ici plutôt que dans le catalogue, pour
+  // que publications.json reste en caractères ordinaires.
+  var nbsp = function (s) { return s.replace(/ ([:;!?»])/g, ' $1').replace(/« /g, '« '); };
+
+  var h1 = document.getElementById('title');
+  h1.textContent = nbsp(title);
+  // Les titres longs passent dans un corps plus petit pour tenir sans rogner le schéma.
+  if (title.length > 78) h1.classList.add('xlong');
+  else if (title.length > 44) h1.classList.add('long');
+
+  var points = (q.get('points') || '').split(';').filter(function (p) { return p.trim(); });
+  var ol = document.getElementById('points');
+  if (points.length) {
+    points.forEach(function (p) {
+      var li = document.createElement('li');
+      li.textContent = nbsp(p.trim());
+      ol.appendChild(li);
+    });
+  } else {
+    ol.remove();
+  }
+
+  var fig = document.getElementById('fig');
+  var figure = FIGURES[q.get('figure')];
+  if (figure) fig.innerHTML = figure;
+  else fig.remove();
+</script>
+</body>
+</html>
