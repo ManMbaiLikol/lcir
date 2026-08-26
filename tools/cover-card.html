@@ -23,6 +23,13 @@
     figure  — identifiant du schéma de bas de page, parmi les blocs
               définis dans FIGURES ci-dessous. Valeur inconnue ou absente :
               la couverture se compose sans schéma.
+    photo   — chemin d'une photographie, relatif à la racine du site. Quand
+              il est fourni, la couverture bascule en mode photographique :
+              la photo occupe tout le fond, le titre revient au premier plan
+              par-dessus un dégradé de lisibilité, et les points-clés comme
+              le schéma sont ignorés.
+    h       — hauteur de la couverture en pixels (1590 par défaut), pour
+              coller au cadrage de la photographie.
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -98,6 +105,21 @@
   .ladder .bar{height:66px;border-radius:5px;min-width:7px}
   .ladder .val{font-size:25px;font-weight:800;color:#f8f2e3;white-space:nowrap}
 
+  /* Mode photographique : la photo porte la couverture, le titre revient
+     au premier plan puisqu'aucun schéma ne lui dispute la place. Le dégradé
+     n'est là que pour garantir le contraste du texte sur l'image. */
+  .cover.photo{background-size:cover;background-position:center}
+  .cover.photo::before{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,9,7,.86) 0%,rgba(10,9,7,.46) 30%,
+                                      rgba(10,9,7,0) 50%,rgba(10,9,7,.5) 88%,rgba(10,9,7,.76) 100%)}
+  .cover.photo>*:not(.flag){position:relative}
+  .cover.photo .head{margin-top:0;padding-top:92px}
+  .cover.photo h1{font-size:76px;line-height:1.04;font-weight:900;letter-spacing:-.025em;
+                  color:#f8f2e3;text-shadow:0 2px 26px rgba(10,9,7,.55)}
+  .cover.photo h1.long{font-size:64px}
+  .cover.photo h1.xlong{font-size:52px;line-height:1.1}
+  .cover.photo .foot{margin-top:auto}
+
   .foot{display:flex;align-items:center;gap:20px;margin-top:52px;
         padding-top:34px;border-top:1px solid rgba(248,242,227,.16)}
   .foot img{height:56px;width:auto;display:block}
@@ -151,6 +173,12 @@
   };
 
   var q = new URLSearchParams(location.search);
+
+  // Hauteur ajustable : une photographie a rarement le cadrage 2:3 du
+  // gabarit typographique.
+  var h = parseInt(q.get('h'), 10) || 1590;
+  document.body.style.height = h + 'px';
+  document.querySelector('.cover').style.height = h + 'px';
   var title = q.get('title') || '';
   document.getElementById('kicker').textContent = q.get('kicker') || 'LCIR';
 
@@ -181,6 +209,16 @@
   var figure = FIGURES[q.get('figure')];
   if (figure) fig.innerHTML = figure;
   else fig.remove();
+
+  // En mode photographique, la photo remplace points-clés et schéma.
+  var photo = q.get('photo');
+  if (photo) {
+    var cover = document.querySelector('.cover');
+    cover.classList.add('photo');
+    cover.style.backgroundImage = 'url("../' + photo + '")';
+    if (ol.parentNode) ol.remove();
+    if (fig.parentNode) fig.remove();
+  }
 </script>
 </body>
 </html>
