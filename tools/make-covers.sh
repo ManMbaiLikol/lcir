@@ -26,7 +26,6 @@ PORT="${PORT:-8098}"
 # identifiant | surtitre | titre | points-clés (séparés par « ; ») | schéma
 COVERS=(
   "conjoncture-2025|ARTICLE · CONJONCTURE|Conjoncture 2025 : et si le Cameroun comptait son économie selon le SCN 2025 ?|Le PIB n’augmente pas : c’est sa mesure qui change;La valeur du capital naturel n’est jamais additionnée au PIB;Un ratio de dette qui baisse n’est pas un désendettement|conjoncture"
-  "minim-martap|ARTICLE · MINES & RESSOURCES|Minim-Martap : la bataille pour Canyon|Eagle Eye : 19,9 % du capital en 2022, 55,56 % en 2026;Une OPA à 0,05 AUD, contre 0,087 AUD avant l’offre;Canyon étudiait déjà, lui aussi, une raffinerie d’alumine|minim-martap"
 )
 
 # Encodage des paramètres d'URL.
