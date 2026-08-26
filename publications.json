@@ -1,6 +1,36 @@
 {
   "publications": [
     {
+      "id": "minim-martap",
+      "category": "article",
+      "number": null,
+      "title": "Minim-Martap : la bataille pour Canyon",
+      "author": "Man Mbaï Likol",
+      "year": "2026",
+      "pages": null,
+      "excerpt": "AFG Bank suspend ses décaissements, Canyon retire son calendrier d’exportation, A2MP propose de racheter les minoritaires à 0,05 AUD. Derrière le retard du premier bateau, une bataille de contrôle — et une question industrielle : qui captera la valeur de la bauxite camerounaise ?",
+      "cover": "assets/minim-martap-cover.webp",
+      "pdf": "assets/minim-martap.pdf",
+      "read": "lecture-minim-martap.html",
+      "theme": "mines",
+      "published": true
+    },
+    {
+      "id": "conjoncture-2025",
+      "category": "article",
+      "number": null,
+      "title": "Conjoncture 2025 : et si le Cameroun comptait son économie selon le SCN 2025 ?",
+      "author": "Man Mbaï Likol",
+      "year": "2026",
+      "pages": null,
+      "excerpt": "Le FMI retient 3,1 % de croissance et 40,3 % de dette pour 2025. Une simulation de migration vers le SCN 2025 porterait le PIB nominal de 34 445 à 37 373 milliards de FCFA et ferait tomber la dette à 37,1 % du PIB. Ce que cela signifie — et surtout ce que cela ne signifie pas.",
+      "cover": "assets/conjoncture-2025-cover.webp",
+      "pdf": "assets/conjoncture-2025.pdf",
+      "read": "lecture-conjoncture-2025.html",
+      "theme": "conjoncture",
+      "published": true
+    },
+    {
       "id": "fifa-uefa",
       "category": "article",
       "number": null,

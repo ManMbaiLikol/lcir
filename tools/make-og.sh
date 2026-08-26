@@ -30,6 +30,8 @@ CARDS=(
   "afd-diaspora|ARTICLE|Pourquoi l'AFD est-elle associée au projet de mobilisation de 2 000 milliards FCFA auprès de la diaspora ?|assets/afd-diaspora-cover.webp"
   "ai-act-europe|ARTICLE|L'Europe entre dans l'ère de la régulation de l'intelligence artificielle. Et le Cameroun devrait s'y intéresser.|assets/ai-act-europe-cover.webp"
   "fifa-uefa|ARTICLE · GÉOÉCONOMIE|FIFA–UEFA : la guerre pour la rente mondiale du football|assets/fifa-uefa-cover.webp"
+  "minim-martap|ARTICLE · MINES & RESSOURCES|Minim-Martap : la bataille pour Canyon|assets/minim-martap-cover.webp"
+  "conjoncture-2025|ARTICLE · CONJONCTURE|Conjoncture 2025 : et si le Cameroun comptait son économie selon le SCN 2025 ?|assets/conjoncture-2025-cover.webp"
 )
 
 # Encodage des paramètres d'URL.

@@ -8,12 +8,30 @@
     <language>fr</language>
     <copyright>© 2026 LCIR — Laboratoire Camerounais d'Ingénierie du Raisonnement</copyright>
     <managingEditor>kamerdesignstyle@gmail.com (Man Mbaï Likol)</managingEditor>
-    <lastBuildDate>Fri, 07 Aug 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2026 12:00:00 +0000</lastBuildDate>
     <image>
       <url>https://manmbailikol.github.io/lcir/assets/logo-lcir.png</url>
       <title>LCIR — Publications</title>
       <link>https://manmbailikol.github.io/lcir/publications.html</link>
     </image>
+
+    <item>
+      <title>Minim-Martap : la bataille pour Canyon</title>
+      <link>https://manmbailikol.github.io/lcir/lecture-minim-martap.html</link>
+      <guid isPermaLink="true">https://manmbailikol.github.io/lcir/lecture-minim-martap.html</guid>
+      <dc:creator>Man Mbaï Likol</dc:creator>
+      <category>Article</category>
+      <description>AFG Bank suspend ses décaissements, Canyon retire son calendrier d'exportation, A2MP propose de racheter les minoritaires à 0,05 AUD. Derrière le retard du premier bateau, une bataille de contrôle — et une question industrielle : qui captera la valeur de la bauxite camerounaise ?</description>
+    </item>
+
+    <item>
+      <title>Conjoncture 2025 : et si le Cameroun comptait son économie selon le SCN 2025 ?</title>
+      <link>https://manmbailikol.github.io/lcir/lecture-conjoncture-2025.html</link>
+      <guid isPermaLink="true">https://manmbailikol.github.io/lcir/lecture-conjoncture-2025.html</guid>
+      <dc:creator>Man Mbaï Likol</dc:creator>
+      <category>Article</category>
+      <description>Le FMI retient 3,1 % de croissance et 40,3 % de dette pour 2025. Une simulation de migration vers le SCN 2025 porterait le PIB nominal de 34 445 à 37 373 milliards de FCFA et ferait tomber la dette à 37,1 % du PIB. Ce que cela signifie — et surtout ce que cela ne signifie pas.</description>
+    </item>
 
     <item>
       <title>FIFA–UEFA : la guerre pour la rente mondiale du football</title>
