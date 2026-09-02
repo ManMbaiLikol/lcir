@@ -58,6 +58,19 @@ h1{font-size:42px;line-height:1.13;font-weight:800;margin:0 0 18px;letter-spacin
 .cover-credit{margin:0 auto 26px;text-align:center;font-size:12.5px;
               font-style:italic;line-height:1.5;color:rgba(var(--ink-rgb),.55)}
 .cover-credit a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+
+/* Pièce reproduite dans le corps de l'article (document scanné, annexe).
+   Même raisonnement que la couverture : bornée en hauteur pour rester lisible
+   d'un coup d'œil, l'image pleine restant accessible d'un clic. */
+.figure{margin:32px 0}
+.figure img{display:block;max-width:100%;max-height:min(80vh,900px);width:auto;height:auto;
+            margin:0 auto;border-radius:6px;border:1px solid rgba(var(--border-rgb),.12);background:#fff}
+.figure figcaption{margin-top:12px;text-align:center;font-size:12.5px;
+                   font-style:italic;line-height:1.55;color:rgba(var(--ink-rgb),.55)}
+/* Deux clichés qui se lisent ensemble : côte à côte, une seule légende. */
+.figure .pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+.figure .pair img{width:100%;max-height:none}
+@media (max-width:640px){.figure .pair{grid-template-columns:1fr}}
 .lede{font-family:'Newsreader',Georgia,serif;font-size:22px;line-height:1.5;color:rgba(var(--ink-rgb),.9);border-left:3px solid var(--gold);padding:6px 0 6px 22px;margin:34px 0}
 
 .body{font-size:18px;line-height:1.72}
@@ -252,6 +265,8 @@ blockquote cite{display:block;font-style:normal;font-family:'Inter',sans-serif;f
   /* Le cœur du problème : bornée en centimètres, la couverture occupe une
      fraction de page connue quel que soit le format papier. */
   .cover{max-height:10.5cm;width:auto;margin:0 auto 1.2em}
+  /* Une pièce annexe doit rester lisible sur papier sans manger la page. */
+  .figure img{max-height:16cm}
 
   /* Rien d'indivisible ne doit être coupé par un saut de page. */
   img,.stat,.stats,.note,.pullquote,.chart,.colchart,.barchart,

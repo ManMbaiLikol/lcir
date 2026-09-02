@@ -294,8 +294,8 @@ class Component extends DCLogic {
     const pillLabels = { livre: 'Livres', cahier: 'Cahiers', article: 'Articles' };
     const singular = { livre: 'LIVRE', cahier: 'CAHIER STRATÉGIQUE', article: 'ARTICLE' };
     // Dossiers thématiques (regroupement par thème). L'ordre définit l'affichage.
-    const themeMeta = { raisonnement: 'Raisonnement & prospective', monnaie: 'Souveraineté monétaire', conjoncture: 'Conjoncture & comptes nationaux', corridor: 'Corridor & industrie', mines: 'Mines & ressources', finance: 'Finance & diaspora', numerique: 'Numérique & souveraineté technologique', geoeconomie: 'Géoéconomie & puissances' };
-    const themeOrder = ['raisonnement', 'monnaie', 'conjoncture', 'corridor', 'mines', 'finance', 'numerique', 'geoeconomie'];
+    const themeMeta = { raisonnement: 'Raisonnement & prospective', monnaie: 'Souveraineté monétaire', conjoncture: 'Conjoncture & comptes nationaux', corridor: 'Corridor & industrie', mines: 'Mines & ressources', finance: 'Finance & diaspora', numerique: 'Numérique & souveraineté technologique', geoeconomie: 'Géoéconomie & puissances', sport: 'Sport & économie du football' };
+    const themeOrder = ['raisonnement', 'monnaie', 'conjoncture', 'corridor', 'mines', 'finance', 'numerique', 'geoeconomie', 'sport'];
     const groupBy = this.state.groupBy || 'theme';
     const latest = pubs.find(p => p.published) || pubs[0] || {};
 

@@ -1,6 +1,21 @@
 {
   "publications": [
     {
+      "id": "football-scolaire",
+      "category": "article",
+      "number": null,
+      "title": "Pourquoi Samuel Eto’o a-t-il choisi de soutenir Gianni Infantino ?",
+      "author": "Man Mbaï Likol",
+      "year": "2026",
+      "pages": null,
+      "excerpt": "Le 31 août 2026, le MINEDUB demande la sélection de 850 écoles primaires publiques et de 90 enseignants d’EPS pour FIFA Football for Schools et FIFA Arena. Derrière la question des personnes, une question de système — éclairée par ce que sept déploiements étrangers, de l’Inde au Niger, prouvent réellement : le Cameroun peut-il passer d’une détection accidentelle des talents à une détection organisée ?",
+      "cover": "assets/football-scolaire-cover.webp",
+      "pdf": "assets/football-scolaire.pdf",
+      "read": "lecture-football-scolaire.html",
+      "theme": "sport",
+      "published": true
+    },
+    {
       "id": "minim-martap",
       "category": "article",
       "number": null,

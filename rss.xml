@@ -8,12 +8,21 @@
     <language>fr</language>
     <copyright>© 2026 LCIR — Laboratoire Camerounais d'Ingénierie du Raisonnement</copyright>
     <managingEditor>kamerdesignstyle@gmail.com (Man Mbaï Likol)</managingEditor>
-    <lastBuildDate>Wed, 26 Aug 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 12:00:00 +0000</lastBuildDate>
     <image>
       <url>https://manmbailikol.github.io/lcir/assets/logo-lcir.png</url>
       <title>LCIR — Publications</title>
       <link>https://manmbailikol.github.io/lcir/publications.html</link>
     </image>
+
+    <item>
+      <title>Pourquoi Samuel Eto’o a-t-il choisi de soutenir Gianni Infantino ?</title>
+      <link>https://manmbailikol.github.io/lcir/lecture-football-scolaire.html</link>
+      <guid isPermaLink="true">https://manmbailikol.github.io/lcir/lecture-football-scolaire.html</guid>
+      <dc:creator>Man Mbaï Likol</dc:creator>
+      <category>Article</category>
+      <description>Le 31 août 2026, le MINEDUB demande la sélection de 850 écoles primaires publiques et de 90 enseignants d’EPS pour FIFA Football for Schools et FIFA Arena. Derrière la question des personnes, une question de système — éclairée par ce que sept déploiements étrangers, de l’Inde au Niger, prouvent réellement : le Cameroun peut-il passer d’une détection accidentelle des talents à une détection organisée ?</description>
+    </item>
 
     <item>
       <title>Minim-Martap : la bataille pour Canyon</title>

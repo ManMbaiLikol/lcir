@@ -32,6 +32,7 @@ CARDS=(
   "fifa-uefa|ARTICLE · GÉOÉCONOMIE|FIFA–UEFA : la guerre pour la rente mondiale du football|assets/fifa-uefa-cover.webp"
   "minim-martap|ARTICLE · MINES & RESSOURCES|Minim-Martap : la bataille pour Canyon|assets/minim-martap-cover.webp"
   "conjoncture-2025|ARTICLE · CONJONCTURE|Conjoncture 2025 : et si le Cameroun comptait son économie selon le SCN 2025 ?|assets/conjoncture-2025-cover.webp"
+  "football-scolaire|ARTICLE · SPORT & ÉCONOMIE DU FOOTBALL|Pourquoi Samuel Eto'o a-t-il choisi de soutenir Gianni Infantino ?|assets/football-scolaire-cover.webp"
 )
 
 # Encodage des paramètres d'URL.
