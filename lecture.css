@@ -246,6 +246,88 @@ blockquote cite{display:block;font-style:normal;font-family:'Inter',sans-serif;f
 }
 
 /* ==========================================================================
+   PISTE « FEUILLE + TRICOLORE »  —  en essai sur lecture-prosperite-materielle
+   Deux constats : la colonne de lecture partageait le fond du site, donc rien
+   ne délimitait l'article ; et le seul accent de la charte était l'or, alors
+   que l'or EST le jaune du drapeau — le vert et le rouge restaient inutilisés.
+   D'où : l'article devient une feuille claire posée sur un fond plus sourd,
+   coiffée du ruban tricolore des cartes de partage ; et le vert et le rouge
+   deviennent porteurs de sens (vert = méthode et faits établis, rouge = mise
+   en garde et valeur en recul, or = le chiffre du moment).
+   Tout est porté par une classe sur <body> : les autres pages de lecture ne
+   bougent pas. Généraliser = poser la classe sur les autres pages.
+   ========================================================================== */
+body.feuille{
+  --ground:#e9dfc9;          /* le fond du site, rabattu d'un cran */
+  --paper:#fdfaf1;           /* la feuille de l'article */
+  --cm-vert:#1f6b4f;         /* vert du drapeau, désaturé au niveau du gold-deep */
+  --cm-vert-clair:#3e9b74;   /* sa version pour fond sombre */
+  --cm-rouge:#a8202b;
+  --cm-rouge-clair:#d8535c;
+  background:var(--ground)}
+/* La navigation reprend le fond sourd : sans cela la page a trois tons. */
+.feuille .nav{background:var(--ground)}
+/* 864 = 772 px de texte (mesure inchangée) + 2 × 46 px de marge de feuille. */
+.feuille .wrap{background:var(--paper);max-width:864px;margin:34px auto 52px;
+  padding:0 46px 46px;border-radius:14px;
+  box-shadow:0 1px 2px rgba(23,20,16,.06),0 18px 50px -18px rgba(23,20,16,.28)}
+.feuille .wrap::before{content:"";display:block;height:5px;margin:0 -46px 40px;
+  border-radius:14px 14px 0 0;
+  background:linear-gradient(90deg,var(--cm-vert) 0 33.34%,var(--cm-rouge) 0 66.67%,var(--gold) 0)}
+
+/* Encadrés : la couleur annonce la nature de l'encadré avant la lecture. */
+.feuille .note{background:rgba(201,147,46,.07);border-color:rgba(var(--border-rgb),.07);
+  border-left:3px solid var(--gold)}
+.feuille .note--methode{background:rgba(31,107,79,.07);border-left-color:var(--cm-vert)}
+.feuille .note--methode .note-label{color:var(--cm-vert)}
+.feuille .note--alerte{background:rgba(168,32,43,.06);border-left-color:var(--cm-rouge)}
+.feuille .note--alerte .note-label{color:var(--cm-rouge)}
+
+/* Sections numérotées, la couleur du numéro tourne sur les trois du drapeau.
+   Volontairement séparé de .feuille : tous les articles n'ont pas la même
+   numérotation. Certains numérotent en chiffres romains, d'autres fusionnent
+   deux sections sous un seul titre, d'autres ne numérotent pas du tout — un
+   compteur CSS ne sait reproduire aucun de ces trois cas. La classe est donc
+   posée article par article, sur ceux qui numérotent 1, 2, 3… sans rupture,
+   et les titres concernés ne portent plus leur numéro en dur. */
+.feuille.numerotee .body{counter-reset:sec}
+.feuille.numerotee .body h2{counter-increment:sec;padding-top:26px}
+.feuille.numerotee .body h2::before{content:counter(sec,decimal-leading-zero);display:block;
+  font-size:11px;font-weight:800;letter-spacing:.14em;margin-bottom:10px;color:var(--cm-vert)}
+.feuille.numerotee .body h2:nth-of-type(3n+2)::before{color:var(--cm-rouge)}
+.feuille.numerotee .body h2:nth-of-type(3n)::before{color:var(--gold-deep)}
+/* Un titre « plain » ne prend pas de numéro et n'en consomme pas non plus :
+   sinon un titre non numéroté au milieu décalerait toute la suite. Il reprend
+   aussi le padding de .body h2.plain, que .feuille .body h2 écrasait. */
+.feuille.numerotee .body h2.plain{counter-increment:none;padding-top:0}
+.feuille.numerotee .body h2.plain::before{content:none}
+
+/* Chiffres-clés : liseré tricolore en tête de carte. */
+.feuille .stat{position:relative;overflow:hidden}
+.feuille .stat::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--cm-vert-clair)}
+.feuille .stats .stat:nth-child(3n+2)::before{background:var(--gold)}
+.feuille .stats .stat:nth-child(3n)::before{background:var(--cm-rouge-clair)}
+
+/* Tableaux et chapô. */
+.feuille thead th{color:var(--cm-vert);border-bottom:2px solid var(--cm-vert)}
+.feuille tbody tr:hover{background:rgba(31,107,79,.06)}
+.feuille .lede{border-left-color:var(--cm-vert)}
+
+/* Graphiques : une valeur en recul se lit en rouge au lieu de se fondre
+   dans les autres barres. */
+.feuille .cbar--bas{background:var(--cm-rouge)}
+.feuille .bfill--bas{background:var(--cm-rouge)}
+
+@media (max-width:900px){
+  /* La feuille garde une marge latérale : collée aux bords, elle ne se lit
+     plus comme une feuille. */
+  .feuille .wrap{max-width:none;margin:14px 12px 30px;padding:0 20px 32px;border-radius:10px}
+  .feuille .wrap::before{margin:0 -20px 28px;border-radius:10px 10px 0 0}
+}
+
+
+/* ==========================================================================
    IMPRESSION ET EXPORT PDF
    Les pages de lecture n'avaient aucun style d'impression : la couverture
    débordait sur une deuxième page et toute l'interface (navigation collante,
@@ -260,6 +342,9 @@ blockquote cite{display:block;font-style:normal;font-family:'Inter',sans-serif;f
 
   body{background:#fff}
   .wrap{max-width:none;padding:0}
+  /* La feuille et son ruban n'ont pas de sens sur papier : la page EST la feuille. */
+  .feuille .wrap{background:none;box-shadow:none;border-radius:0;margin:0;max-width:none;padding:0}
+  .feuille .wrap::before{display:none}
   .body{font-size:11.5pt;line-height:1.55}
 
   /* Le cœur du problème : bornée en centimètres, la couverture occupe une
