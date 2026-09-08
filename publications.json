@@ -1,6 +1,21 @@
 {
   "publications": [
     {
+      "id": "prosperite-materielle",
+      "category": "article",
+      "number": null,
+      "title": "Cameroun 1982 → 2026 : les Camerounais deviennent-ils matériellement plus prospères ?",
+      "author": "Man Mbaï Likol",
+      "year": "2026",
+      "pages": null,
+      "excerpt": "Le Legatum Prosperity Index 2026 place le Cameroun au 133e rang. Mais un classement est une photographie, pas un film. Équipement des ménages, téléphonie, GPL, ciment, importations, santé, électricité et investissement privé : huit traces indépendantes racontent quarante-quatre ans de transformation matérielle — et le piège d’une consommation que l’appareil productif national ne capte pas.",
+      "cover": "assets/prosperite-materielle-cover.webp",
+      "pdf": "assets/prosperite-materielle.pdf",
+      "read": "lecture-prosperite-materielle.html",
+      "theme": "conjoncture",
+      "published": true
+    },
+    {
       "id": "football-scolaire",
       "category": "article",
       "number": null,

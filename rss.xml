@@ -8,12 +8,21 @@
     <language>fr</language>
     <copyright>© 2026 LCIR — Laboratoire Camerounais d'Ingénierie du Raisonnement</copyright>
     <managingEditor>kamerdesignstyle@gmail.com (Man Mbaï Likol)</managingEditor>
-    <lastBuildDate>Wed, 02 Sep 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2026 12:00:00 +0000</lastBuildDate>
     <image>
       <url>https://manmbailikol.github.io/lcir/assets/logo-lcir.png</url>
       <title>LCIR — Publications</title>
       <link>https://manmbailikol.github.io/lcir/publications.html</link>
     </image>
+
+    <item>
+      <title>Cameroun 1982 → 2026 : les Camerounais deviennent-ils matériellement plus prospères ?</title>
+      <link>https://manmbailikol.github.io/lcir/lecture-prosperite-materielle.html</link>
+      <guid isPermaLink="true">https://manmbailikol.github.io/lcir/lecture-prosperite-materielle.html</guid>
+      <dc:creator>Man Mbaï Likol</dc:creator>
+      <category>Article</category>
+      <description>Le Legatum Prosperity Index 2026 place le Cameroun au 133e rang. Mais un classement est une photographie, pas un film. Équipement des ménages, téléphonie, GPL, ciment, importations, santé, électricité et investissement privé : huit traces indépendantes racontent quarante-quatre ans de transformation matérielle — et le piège d’une consommation que l’appareil productif national ne capte pas.</description>
+    </item>
 
     <item>
       <title>Pourquoi Samuel Eto’o a-t-il choisi de soutenir Gianni Infantino ?</title>
