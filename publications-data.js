@@ -14,7 +14,7 @@
 //
 // Champ `theme` : dossier thématique, parmi les clés de `categoryMeta`/`themeMeta`
 // ('raisonnement', 'monnaie', 'conjoncture', 'corridor', 'mines', 'finance',
-// 'numerique', 'geoeconomie', 'sport').
+// 'numerique', 'geoeconomie', 'sport', 'culture').
 
 let publications = [];
 

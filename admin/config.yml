@@ -70,4 +70,5 @@ collections:
                   - { label: "Numérique & souveraineté technologique", value: "numerique" }
                   - { label: "Géoéconomie & puissances", value: "geoeconomie" }
                   - { label: "Sport & économie du football", value: "sport" }
+                  - { label: "Culture, patrimoine & création", value: "culture" }
               - { name: "published", label: "Publié", widget: "boolean", default: false, hint: "Décocher pour « à paraître »" }

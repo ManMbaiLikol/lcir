@@ -1,6 +1,21 @@
 {
   "publications": [
     {
+      "id": "identite-bassa",
+      "category": "article",
+      "number": null,
+      "title": "Projet identitaire bassa du Cameroun",
+      "author": "Man Mbaï Likol",
+      "year": "2026",
+      "pages": null,
+      "excerpt": "Faire du pagne un support de représentation et de transmission pour le peuple bassa du Cameroun : cinq bassagrammes, une palette noir, blanc et rouge, une grammaire géométrique déclinable dans le vêtement, l’édition, le numérique et l’espace. Fondements historiques et philosophiques, répertoire symbolique, système visuel, applications et cadre de partenariat.",
+      "cover": "assets/bassa-app-mode.webp",
+      "pdf": "assets/bassa-identite.pdf",
+      "read": "projet-identite-bassa.html",
+      "theme": "culture",
+      "published": true
+    },
+    {
       "id": "prosperite-materielle",
       "category": "article",
       "number": null,

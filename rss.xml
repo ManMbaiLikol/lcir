@@ -8,12 +8,21 @@
     <language>fr</language>
     <copyright>© 2026 LCIR — Laboratoire Camerounais d'Ingénierie du Raisonnement</copyright>
     <managingEditor>kamerdesignstyle@gmail.com (Man Mbaï Likol)</managingEditor>
-    <lastBuildDate>Tue, 08 Sep 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 12:00:00 +0000</lastBuildDate>
     <image>
       <url>https://manmbailikol.github.io/lcir/assets/logo-lcir.png</url>
       <title>LCIR — Publications</title>
       <link>https://manmbailikol.github.io/lcir/publications.html</link>
     </image>
+
+    <item>
+      <title>Projet identitaire bassa du Cameroun</title>
+      <link>https://manmbailikol.github.io/lcir/projet-identite-bassa.html</link>
+      <guid isPermaLink="true">https://manmbailikol.github.io/lcir/projet-identite-bassa.html</guid>
+      <dc:creator>Man Mbaï Likol</dc:creator>
+      <category>Article</category>
+      <description>Faire du pagne un support de représentation et de transmission pour le peuple bassa du Cameroun : cinq bassagrammes, une palette noir, blanc et rouge, une grammaire géométrique déclinable dans le vêtement, l’édition, le numérique et l’espace. Fondements historiques et philosophiques, répertoire symbolique, système visuel, applications et cadre de partenariat.</description>
+    </item>
 
     <item>
       <title>Cameroun 1982 → 2026 : les Camerounais deviennent-ils matériellement plus prospères ?</title>
