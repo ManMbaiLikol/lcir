@@ -328,6 +328,118 @@ body.feuille{
 
 
 /* ==========================================================================
+   COMPOSANTS « DOSSIER »  —  introduits avec le dossier Minim-Martap de
+   novembre 2026. Ils mettent en scène des données que les barres et les
+   tableaux rendaient mal : une chronologie, une chaîne de détention, un
+   seuil à atteindre, deux hypothèses face à face, un degré de preuve.
+   Les couleurs du drapeau ont une valeur par défaut : les composants restent
+   lisibles hors d'une page .feuille.
+   ========================================================================== */
+
+/* Chronologie verticale. .is-key marque un tournant, .is-bad un revers. */
+.timeline{list-style:none;margin:30px 0;padding:0 0 0 4px;position:relative}
+.body .timeline li{position:relative;padding:0 0 20px 34px;counter-increment:none}
+.body .timeline li::before{content:"";position:absolute;left:0;top:7px;width:11px;height:11px;border-radius:50%;
+  background:var(--paper,var(--bg));border:2px solid var(--gold);box-sizing:border-box;display:block}
+.body .timeline li::after{content:"";position:absolute;left:5px;top:20px;bottom:-2px;width:1px;background:rgba(var(--border-rgb),.16)}
+.body .timeline li:last-child::after{display:none}
+.body .timeline li.is-key::before{background:var(--gold)}
+.body .timeline li.is-bad::before{background:var(--cm-rouge,#a8202b);border-color:var(--cm-rouge,#a8202b)}
+.body .timeline li.is-next::before{border-color:rgba(var(--ink-rgb),.35);background:transparent}
+.body .timeline li.is-next .t-date{color:rgba(var(--ink-rgb),.55)}
+.timeline .t-date{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:3px}
+.timeline .t-txt{display:block;font-size:15px;line-height:1.55;color:rgba(var(--ink-rgb),.85)}
+
+/* Chaîne de détention : des maillons reliés par la nature du lien. */
+.chain{margin:30px 0;display:flex;flex-direction:column;align-items:stretch;max-width:560px;margin-left:auto;margin-right:auto}
+.chain .link-node{background:var(--dark-surface);color:var(--on-dark);border-radius:8px;padding:14px 18px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+.chain .link-node b{font-size:15.5px;font-weight:800}
+.chain .link-node span{font-size:12px;color:rgba(247,242,230,.65)}
+.chain .link-node.is-project{background:var(--cm-vert,#1f6b4f)}
+.chain .link-node.is-project span{color:rgba(255,255,255,.78)}
+.chain .link-edge{align-self:center;display:flex;flex-direction:column;align-items:center;padding:4px 0;font-size:12.5px;font-weight:700;color:var(--gold-deep);text-align:center;line-height:1.35}
+.chain .link-edge::before{content:"";width:2px;height:12px;background:var(--gold)}
+.chain .link-edge::after{content:"";width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:7px solid var(--gold)}
+.chain .link-edge em{font-style:normal;font-size:20px;font-weight:800;color:rgb(var(--ink-rgb));display:block;margin:2px 0}
+
+/* Jauge à seuils : une valeur et les paliers qui lui donnent son sens. */
+.meter{margin:34px 0 26px}
+.meter-track{position:relative;height:30px;background:rgba(var(--ink-rgb),.07);border-radius:6px}
+.meter-fill{position:absolute;left:0;top:0;bottom:0;background:var(--gold);border-radius:6px 0 0 6px}
+.meter-val{position:absolute;top:50%;transform:translateY(-50%);margin-left:10px;font-size:14px;font-weight:800;color:rgb(var(--ink-rgb));white-space:nowrap}
+.meter-mark{position:absolute;top:-7px;bottom:-7px;width:2px;background:rgb(var(--ink-rgb))}
+.meter-mark.is-target{background:var(--cm-rouge,#a8202b)}
+.meter-mark span{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:6px;white-space:nowrap;font-size:11.5px;font-weight:700;color:rgba(var(--ink-rgb),.7)}
+.meter-mark.is-target span{color:var(--cm-rouge,#a8202b)}
+.meter-gap{margin-top:34px;font-size:13px;color:rgba(var(--ink-rgb),.6)}
+
+/* Barre empilée : un total et ce qu'il en est advenu. */
+.stack{display:flex;height:34px;border-radius:6px;overflow:hidden;background:rgba(var(--ink-rgb),.06)}
+.stack span{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;min-width:0}
+.stack .s-ok{background:var(--cm-vert,#1f6b4f)}
+.stack .s-ok2{background:var(--cm-vert-clair,#3e9b74)}
+.stack .s-ko{background:repeating-linear-gradient(135deg,rgba(168,32,43,.82) 0 8px,rgba(168,32,43,.66) 8px 16px)}
+.stack .s-ko2{background:repeating-linear-gradient(135deg,rgba(168,32,43,.6) 0 8px,rgba(168,32,43,.45) 8px 16px)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:14px;font-size:12.5px;color:rgba(var(--ink-rgb),.75)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:7px;vertical-align:-1px}
+
+/* Deux hypothèses face à face, paramètre par paramètre. */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}
+.duo-card{border:1px solid rgba(var(--border-rgb),.12);border-radius:8px;padding:18px 20px;background:rgba(var(--ink-rgb),.02)}
+.duo-card h4{margin:0 0 14px;font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--gold-deep)}
+.duo-row{display:grid;grid-template-columns:62px 1fr 72px;gap:10px;align-items:center;margin-bottom:9px;font-size:13px}
+.duo-row .who{font-weight:700}
+.duo-row .bar{height:20px;border-radius:4px;background:var(--bar-soft)}
+.duo-row .bar.a2mp{background:var(--cm-rouge,#a8202b)}
+.duo-row .bar.canyon{background:var(--cm-vert,#1f6b4f)}
+.duo-row .val{font-weight:800;white-space:nowrap}
+.duo-card .duo-effect{margin-top:12px;padding-top:10px;border-top:1px dashed rgba(var(--border-rgb),.18);font-size:12.5px;color:rgba(var(--ink-rgb),.7)}
+.duo-card .duo-effect b{color:var(--cm-rouge,#a8202b)}
+@media (max-width:640px){.duo{grid-template-columns:1fr}}
+
+/* Calcul posé : a + b = c, pour qu'un ordre de grandeur se vérifie à l'œil. */
+.calc{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 14px;margin:24px 0;padding:22px 18px;background:var(--dark-surface);color:var(--on-dark);border-radius:8px;text-align:center}
+.calc .term b{display:block;font-size:24px;font-weight:800;color:var(--gold-bright);line-height:1.1}
+.calc .term span{display:block;font-size:11.5px;color:rgba(247,242,230,.7);margin-top:4px;max-width:12em}
+.calc .op{font-size:22px;font-weight:800;color:rgba(247,242,230,.55)}
+.calc .term.total{flex-basis:100%;margin-top:4px;padding-top:14px;border-top:1px solid rgba(247,242,230,.15)}
+.calc .term.total b{color:#fff;font-size:28px}
+.calc .term.total span{max-width:none}
+
+/* Avancement : une valeur sur un total. */
+.progress{height:8px;border-radius:4px;background:rgba(247,242,230,.16);margin-top:12px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--gold-bright);border-radius:4px}
+
+/* Hypothèses classées par degré de preuve. */
+.hypos{display:grid;gap:14px;margin:28px 0}
+.hypo{border:1px solid rgba(var(--border-rgb),.12);border-left:4px solid var(--gold);border-radius:8px;padding:18px 22px;background:rgba(var(--ink-rgb),.02)}
+.hypo.h-ok{border-left-color:var(--cm-vert,#1f6b4f)}
+.hypo.h-no{border-left-color:var(--cm-rouge,#a8202b)}
+.hypo-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.hypo-head b{font-size:16.5px;font-weight:800}
+.hypo p{margin:0 !important;font-size:15.5px;line-height:1.6;color:rgba(var(--ink-rgb),.82)}
+.hypo .proof{margin-top:10px !important;font-size:13px !important;color:rgba(var(--ink-rgb),.6) !important;font-style:italic}
+
+/* Pastille d'état (tableaux de situation, hypothèses). */
+.pill{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 10px;white-space:nowrap;
+  background:rgba(201,147,46,.16);color:var(--gold-deep)}
+.pill.p-ok{background:rgba(31,107,79,.13);color:var(--cm-vert,#1f6b4f)}
+.pill.p-ko{background:rgba(168,32,43,.11);color:var(--cm-rouge,#a8202b)}
+.pill.p-neutre{background:rgba(var(--ink-rgb),.08);color:rgba(var(--ink-rgb),.7)}
+
+/* Renvoi vers un article lié (suite, épisode précédent). */
+.see-also{display:flex;gap:14px;align-items:center;margin:26px 0;padding:14px 18px;border:1px solid rgba(var(--border-rgb),.12);border-radius:8px;font-size:14px;line-height:1.5;color:rgba(var(--ink-rgb),.75)}
+.see-also b{font-size:10.5px;font-weight:800;letter-spacing:.08em;color:var(--gold-deep);white-space:nowrap}
+.see-also a{font-weight:700}
+
+@media print{
+  .timeline li,.chain,.meter,.duo,.calc,.hypo{page-break-inside:avoid;break-inside:avoid}
+  .calc{background:none;color:#000;border:1px solid #999}
+  .calc .term b,.calc .term.total b{color:#000}
+  .calc .term span,.calc .op{color:#444}
+}
+
+/* ==========================================================================
    IMPRESSION ET EXPORT PDF
    Les pages de lecture n'avaient aucun style d'impression : la couverture
    débordait sur une deuxième page et toute l'interface (navigation collante,

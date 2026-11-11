@@ -1,6 +1,21 @@
 {
   "publications": [
     {
+      "id": "minim-martap-canyon",
+      "category": "article",
+      "number": null,
+      "title": "Minim-Martap : de l’espoir d’une révolution minière au bras de fer pour le contrôle de Canyon Resources",
+      "author": "Man Mbaï Likol",
+      "year": "2026",
+      "pages": null,
+      "excerpt": "OPA à 0,05 AUD sous le cours de Bourse, financement AFG suspendu, ordonnances correctives du Takeovers Panel : l’enquête complète sur la bataille entre Canyon Resources et A2MP. Les locomotives sont arrivées, 125 wagons sur 160 aussi — mais la première expédition n’a plus de date. Ce que ce conflit engage pour la bauxite camerounaise.",
+      "cover": "assets/minim-martap-canyon-cover.webp",
+      "pdf": "assets/minim-martap-canyon.pdf",
+      "read": "lecture-minim-martap-canyon.html",
+      "theme": "mines",
+      "published": true
+    },
+    {
       "id": "identite-bassa",
       "category": "article",
       "number": null,

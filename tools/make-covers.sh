@@ -31,6 +31,7 @@ PORT="${PORT:-8098}"
 COVERS=(
   "conjoncture-2025|ARTICLE · CONJONCTURE|Conjoncture 2025 : et si le Cameroun comptait son économie selon le SCN 2025 ?|Le PIB n’augmente pas : c’est sa mesure qui change;La valeur du capital naturel n’est jamais additionnée au PIB;Un ratio de dette qui baisse n’est pas un désendettement|conjoncture||1590"
   "minim-martap|ARTICLE · MINES & RESSOURCES|Minim-Martap : la bataille pour Canyon|||assets/minim-martap-photo.jpg|1384"
+  "minim-martap-canyon|ENQUÊTE · MINES & RESSOURCES|Minim-Martap : le bras de fer pour le contrôle de Canyon Resources|||assets/minim-canyon-locomotives.webp|1384"
 )
 
 # Encodage des paramètres d'URL.

@@ -35,6 +35,7 @@ CARDS=(
   "prosperite-materielle|ARTICLE · CONJONCTURE & NIVEAU DE VIE|Les Camerounais deviennent-ils matériellement plus prospères ?|assets/prosperite-materielle-cover.webp"
   "football-scolaire|ARTICLE · SPORT & ÉCONOMIE DU FOOTBALL|Pourquoi Samuel Eto'o a-t-il choisi de soutenir Gianni Infantino ?|assets/football-scolaire-cover.webp"
   "bassa-identite|ARTICLE · CULTURE, PATRIMOINE & CRÉATION|Projet identitaire bassa du Cameroun|assets/bassa-app-mode.webp"
+  "minim-martap-canyon|ENQUÊTE · MINES & RESSOURCES|Minim-Martap : le bras de fer pour le contrôle de Canyon Resources|assets/minim-canyon-locomotives.webp"
 )
 
 # Encodage des paramètres d'URL.
